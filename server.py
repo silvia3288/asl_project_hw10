@@ -116,23 +116,23 @@ data = [
 
 
 @app.route('/')
-def hello_world():
-    # For simplicity, selecting the first three items as popular. Adjust as needed.
-    popular_items = data[5:]
-    return render_template('hello_world.html', popular_items=popular_items)
-@app.route('/home')
 def home():
     # Selecting specific items to feature on the home page. Adjust the selection logic as needed.
     featured_items = [data[1], data[2], data[3]]  # Example: using the last two items for display
     return render_template('home.html', featured_items=featured_items)
-@app.route('/coffee')
-def coffee():
-    return render_template('add_item.html')
-@app.route('/on_the_go')
-def on_the_go():
+@app.route('/phrases')
+def phrases():
+    # For simplicity, selecting the first three items as popular. Adjust as needed.
+    popular_items = data[5:]
+    return render_template('helpful_phrases.html', popular_items=popular_items)
+@app.route('/quiz', methods=['GET'])
+def quiz():
+    return render_template('quiz.html')
+@app.route('/greetings')
+def greetings():
     # Filtered data for various cuisines
     on_go = data[0:5]
-    return render_template('on_the_go.html', go_go=on_go)
+    return render_template('greetings.html', go_go=on_go)
   
 @app.template_filter('youtube_id')
 def youtube_id_filter(s):
@@ -169,13 +169,6 @@ def view_item(id):
     else:
         return "Item not found", 404
 
-
-      
-    
-  
-@app.route('/quiz', methods=['GET'])
-def add_item_form():
-    return render_template('add_item.html')
 
 if __name__ == '__main__':
    app.run(debug = True)
