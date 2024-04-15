@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-3 text-center">
+    <h2>Test Your Knowledge!</h2>
+    <!-- Start Quiz button with a custom color -->
+    <button type="button" id="startQuiz" class="btn btn-lg mt-4 custom-button">Start Quiz</button>
+</div>
+
+<script>
+document.getElementById('startQuiz').onclick = function() {
+    // Redirect to the '/coffee' route which is your quiz page
+    window.location.href = "{{ url_for('coffee') }}";
+};
+</script>
+{% endblock %}

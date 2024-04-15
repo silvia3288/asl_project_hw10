@@ -1,0 +1,197 @@
+#hello_div{
+    padding-top:  10px;
+    padding-bottom:  10px;
+    color: purple;
+}
+.ui-autocomplete {
+    position: absolute;
+    z-index: 1000;
+    cursor: default;
+    /* Add your custom styles here */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* ASL */
+.asl-button {
+    background-color: #6c5b7b; /* Purple background */
+    color: white; /* White text */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px; /* Spacing between buttons */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Simple box shadow */
+}
+
+.asl-button:hover {
+    background-color: #260737; /* Darker purple on hover */
+    color: white;
+}
+
+.arrow {
+    font-size: 24px;
+    color: #333;
+    padding: 20px; /* Spacing around arrow */
+}
+
+.greeting-btn {
+    background-color: #6c5b7b; /* Purple background */
+    color: white; /* White text */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px; /* Spacing between buttons */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Simple box shadow */
+}
+
+.greeting-btn:hover {
+    background-color: #5a4963; /* Darker purple on hover */
+    color: rgb(234, 0, 255); /* Change text color to yellow on hover */
+    cursor: pointer;
+}
+
+#greetings-container {
+    max-width: 800px; /* Adjust as necessary */
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+/* General Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.text-center {
+    text-align: right;
+}
+
+/* Video Styles */
+
+
+video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Image Steps Styles */
+.img-fluid {
+    width: 100%; /* Set a width or max-width */
+    height: 250px; /* Set a fixed height */
+    object-fit: contain; /* This will ensure the image fits within the dimensions without being stretched */
+    border-radius: 10px;
+    
+}
+
+/* Pro Tip Section Styles */
+.pro-tip {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.pro-tip::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #f9f9f9 transparent;
+}
+
+/* Back Button Styles */
+.btn-secondary {
+    background-color: #ac15d2;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .video-wrapper,
+    .pro-tip {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+.custom-button {
+    background-color: #6c5b7b; /* Green background */
+    color: white; /* White text */
+}
+
+.custom-button:hover {
+    background-color: #260737; /* Darker green on hover */
+    color: rgb(234, 0, 255);
+}
+
+/* Description styling with border and shadow */
+p.description {
+    background: #e59df2e0; /* White background for the description */
+    border-left: 5px solid #3498db; /* Blue left border for a modern look */
+    padding: 20px; /* Padding inside the description box */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-size: 1.1em; /* Slightly larger font size for readability */
+    line-height: 1.6; /* Improved line height for readability */
+    margin-bottom: 10px; /* Space below the description */
+}
+
+/* Ensures that the container is centered and has a max-width */
+.container {
+    max-width: 1200px; /* Max width for larger screens */
+    margin: 0 auto; /* Center the container */
+    padding: 10px; /* Padding inside the container */
+    background: #f8d8f7; /* Light background for the container */
+}
+
+/* Base and Accent Color Definitions */
+:root {
+    --base-color: #ffffff; /* Set base color to white */
+    --accent-color: #55267f; /* Keeping the original purple as the accent color */
+    --light-grey: #ffffff; /* Light Grey */
+    --dark-grey: #55267f; /* Dark Grey */
+}
+
+body, .navbar, .navbar-expand-lg {
+    background-color: var(--base-color); /* Set the background color for the body and navbar to white */
+    color: var(--dark-grey); /* Set the text color */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark-grey); /* Set the navbar links color */
+}
+
+.navbar-light .navbar-brand {
+    color: var(--accent-color); /* Set the navbar brand color to the accent color */
+}
+
+/* Further navbar styles, if needed */
+.navbar {
+    border-bottom: 1px solid var(--light-grey); /* A subtle border under the navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); /* A light shadow for some depth */
+}
+
+
