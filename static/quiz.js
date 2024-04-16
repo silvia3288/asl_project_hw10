@@ -52,8 +52,8 @@ $(document).ready(function(){
             drop: function(event, ui) {
                 const draggedItemId = $(ui.draggable).data("index");
                 const correct = question["answer_index"].includes(draggedItemId);
-
-                // AJAX POST to submit the answer
+                
+                //correct response
                 $.ajax({
                     url: '/quiz/' + question.id,
                     type: 'POST',
@@ -61,7 +61,6 @@ $(document).ready(function(){
                     data: JSON.stringify({ answer: draggedItemId }),
                     dataType: 'json',
                     success: function(response) {
-                        // Show feedback message
                         $('#drag_feedback').text(response.feedback).show();
 
                         if (response.is_correct) {
@@ -86,8 +85,8 @@ $(document).ready(function(){
                     }
                 });
 
+                // incorrect response
                 if (!correct) {
-                    // If incorrect, show error feedback
                     $('#drag_feedback').addClass('alert-danger').removeClass('alert-success').text(question['wrong_response']).show();
 
                     if (question.id < Object.keys(quiz_questions).length) {
@@ -104,13 +103,13 @@ $(document).ready(function(){
         });
     }
 
-    // Submit button and AJAX call for feedback
+    // submit button and ajax call for feedback
     $('#submit_ans').click(function() {
             const answers = $("input[type='checkbox']:checked").map(function() {
                 return parseInt($(this).attr('id').replace('choice', ''));
             }).get();
 
-            // AJAX POST to submit answers
+            // ajax post to submit answers
             $.ajax({
                 url: '/quiz/' + question.id,
                 type: 'POST',
@@ -118,24 +117,23 @@ $(document).ready(function(){
                 data: JSON.stringify({ answer: answers }),
                 dataType: 'json',
                 success: function(response) {
-                    // Display feedback message
+                    // feedback message
                     $('#feedback').text(response.feedback).show();
 
-                    // Add logic to color code answers - BEGIN NEW SEGMENT
+                    //color coded feedback for answers 
                     $('.choice-checkbox').each(function() {
                         $(this).attr('disabled', true); // Disable checkboxes
                         var choiceIndex = parseInt($(this).attr('value'));
                         if (response.is_correct) {
-                            // Color correct answers green
                             if (question['answer_index'].includes(choiceIndex)) {
                                 $(this).next('label').addClass('correct-answer');
                             }
                         } else {
-                            // If the answer was incorrect but selected, color it red
+                            // incorrect but selected --> red
                             if (answers.includes(choiceIndex)) {
                                 $(this).next('label').addClass('wrong-answer');
                             }
-                            // Color correct answers green
+                            // correct answers selected --> green
                             if (question['answer_index'].includes(choiceIndex)) {
                                 $(this).next('label').addClass('correct-answer');
                             }
@@ -158,7 +156,6 @@ $(document).ready(function(){
         });
 
     
-    // Next question button logic
     $('#nextQuestion').on('click', function() {
         let nextId = $(this).data('next-id');
         if(nextId) {
