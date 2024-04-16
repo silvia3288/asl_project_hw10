@@ -65,6 +65,13 @@
     align-items: center; /* Center items vertically */
 }
 
+#results_div{
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 25px;
+    border: 2px solid var(--dark-grey);
+}
+
 /* General Styles */
 .container {
     max-width: 1200px;
@@ -74,6 +81,22 @@
 
 .text-center {
     text-align: right;
+}
+
+/* Drag and drop */
+
+.draggable:hover{
+    cursor: move;
+    background-color: lightyellow;
+}
+.dropped{
+    background-color: lightgray;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+.ui-state-highlight{
+    background-color: yellow;
 }
 
 /* Video Styles */

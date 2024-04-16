@@ -109,8 +109,95 @@ data = [
   
 ]
 
+quiz_questions = {
+    1 : {
+        "id": "1",
+        "question": "Which of the following words/phrases matches the sign below? Choose all that apply.",
+        "choices": ["Bathroom", "Toilet", "How are you?", "Please"],
+        "answer_index": [0, 1],
+        "if_multiple_choice": "true",
+        "images" : ["https://www.lifeprint.com/asl101/gifs/b/bathroom.gif"],
+        "correct_response": "Good job! This sign means both bathroom and toilet.",
+        "wrong_response": "Oops! Looks like you got it wrong. This sign means both bathroom and toilet."
+    },
+    2 : {
+        "id": "2",
+        "question": "Which of the following words/phrases matches the sign below? Choose all that apply.",
+        "choices": ["Sorry", "Excuse me", "Goodbye", "Thank you"],
+        "answer_index": [1],
+        "if_multiple_choice": "true",
+        "images" : ["https://www.lifeprint.com/asl101/gifs/e/excuse.gif"],
+        "correct_response": "Great job! This is the sign for excuse me.",
+        "wrong_response": "Oops! This sign means excuse me."
+    },
+    3 : {
+        "id": "3",
+        "question": "Which of the following signs is a greeting? Drag the correct image into the box below.",
+        "choices": [],
+        "answer_index":[0],
+        "if_multiple_choice": "false",
+        "images" : ["https://media.baamboozle.com/uploads/images/820398/1655476629_39457.jpeg", "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/please.svg"],
+        "correct_response": "Great job! This sign means what’s your name? The other sign means please, which is not a greeting.",
+        "wrong_response": "Oops, that's wrong! You picked the sign for please, which is not a greeting. The correct choice is the sign for what's your name?"
+    },
+    4 : {
+        "id": "4",
+        "question": "Which of the following is most important to remember when signing 'I'm sorry'?",
+        "choices": ["Use dominant hand", "Sign clockwise", "Repeat the sign", "Use appropriate facial expressions"],
+        "answer_index": [3],
+        "if_multiple_choice": "true",
+        "images" : [],
+        "correct_response": "Good job! Using an apologetic expression helps convey the sign earnestly",
+        "wrong_response": "Oops! The most important aspect for signing 'I'm sorry' is an earnest apologetic expression."
+    },
+    5 : {
+        "id": "5",
+        "question": "Which of the following words/phrases matches the sign below? Choose all that apply.",
+        "choices": ["Excuse me", "Nice to meet you", "Help", "Bathroom"],
+        "answer_index": [2],
+        "if_multiple_choice": "true",
+        "images" : ["https://media.istockphoto.com/id/1351210641/photo/deaf-woman-show-her-hand-for-help-or-aid-as-sign-language-deaf-body-language-concept.jpg?s=612x612&w=0&k=20&c=BvYv_RY4vduNY2Vo18w-3UgTzPxRrIgpWToxJ54CVKQ="],
+        "correct_response": "Good job! This sign means help.",
+        "wrong_response": "Oops! This sign means help, and is signed by moving the thumbs up up and down."
+    },
+    6 : {
+        "id": "6",
+        "question": "Which of the following can be used when meeting someone new? Choose all that apply.",
+        "choices": ["https://assets.change.org/photos/6/hd/bt/qqhdbTcPDxXsNxI-800x450-noPad.jpg?1592899898", "https://slideplayer.com/slide/12841359/78/images/19/Nice+to+meet+you%21.jpg", "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/bathroom.svg"],
+        "answer_index": [0, 1],
+        "if_multiple_choice": "true",
+        "images" : [],
+        "correct_response": "Good job! These signs mean 'nice to meet you' and 'what's your name?' The other sign means 'bathroom'.",
+        "wrong_response": "Oops! The correct signs are options 1 and 2, which mean 'nice to meet you' and 'what's your name?'. The other option means 'bathroom' which is not a way to greet someone."
+    },
+    7 : {
+        "id": "7",
+        "question": "Which of the following is most important to remember when signing 'Please'?",
+        "choices": ["Use dominant hand", "Sign counterclockwise", "Repeat the sign", "Use appropriate facial expressions"],
+        "answer_index": [1],
+        "if_multiple_choice": "true",
+        "images" : [],
+        "correct_response": "Good job! The sign for 'please' should be done counterclockwise.",
+        "wrong_response": "Oops! The most important part of signing please is to sign counterclockwise, to correctly say please."
+    },
+    8 : {
+        "id": "8",
+        "question": "Which of the following words/phrases matches the sign below? Choose all that apply.",
+        "choices": ["Hello", "Nice to meet you", "Goodbye", "How are you?"],
+        "answer_index": [2],
+        "if_multiple_choice": "true",
+        "images" : ["https://o.quizlet.com/o5GUae5t8-3ZrflI6QxO5A.png"],
+        "correct_response": "Good job! This sign means goodbye.",
+        "wrong_response": "Oops! This sign means goodbye (not to be confused with hello)."
+    },
+}
 
-
+quiz_results_text = {
+    1:"Awesome job, you're really getting the hang of this! Do you want to level up and learn harder ASL signs? Check out these courses at: https://www.tlcdeaf.org/services/community-asl-classes"
+    ,
+    2: "Good effort! A good way to improve your score would be to review the material again and try making signs as you progress!"
+    
+}
 
 # ROUTES
 
@@ -125,15 +212,26 @@ def phrases():
     # For simplicity, selecting the first three items as popular. Adjust as needed.
     popular_items = data[5:]
     return render_template('helpful_phrases.html', popular_items=popular_items)
-@app.route('/quiz', methods=['GET'])
-def quiz():
-    return render_template('quiz.html')
+
 @app.route('/greetings')
 def greetings():
     # Filtered data for various cuisines
     on_go = data[0:5]
     return render_template('greetings.html', go_go=on_go)
+
+@app.route('/quiz', methods=['GET'])
+def quiz():
+    return render_template('quiz.html')
+
+@app.route('/quiz/<id>', methods=['GET'])
+def quiz_question(id):
+    question = quiz_questions[int(id)]
+    return render_template('quiz.html', question_num=id, question=question)
   
+@app.route('/quiz_results', methods=['GET'])
+def quiz_results():
+    return render_template('quiz_results.html', results_text=quiz_results_text)
+
 @app.template_filter('youtube_id')
 def youtube_id_filter(s):
     """Extracts the video ID from a YouTube URL."""

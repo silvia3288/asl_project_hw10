@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<script>
+    let results_text = {{results_text|tojson}}
+    $(document).ready(function(){
+        $("#results").html(results_text[1])
+    })
+</script>
+
+<div class="container mt-3 text-center">
+    <div class="ml-auto mr-auto">
+        <div id="results_div" class="bg-light p-2">
+            <h5>Test Results: ?/8</h5>
+            <p id="results"></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
