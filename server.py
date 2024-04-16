@@ -7,8 +7,9 @@ from flask import Flask, render_template, request, redirect, url_for
 import re
 import random
 from urllib.parse import urlparse, parse_qs
+from flask import session
 app = Flask(__name__)
-
+app.secret_key = 'secret_key'
 
 current_id = 9
 data = [
@@ -221,17 +222,56 @@ def greetings():
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
+    # initialize score at the start of the quiz
+    session['score'] = 0  
     return render_template('quiz.html')
 
-@app.route('/quiz/<id>', methods=['GET'])
+@app.route('/quiz/<id>', methods=['GET', 'POST'])
 def quiz_question(id):
     question = quiz_questions[int(id)]
+    if request.method == 'POST':
+        if question["if_multiple_choice"] == "true":
+            submitted_answers = request.get_json()['answer']
+            correct_indices = question['answer_index']
+            is_correct = set(submitted_answers) == set(correct_indices)
+        else:
+            submitted_answer = int(request.get_json()['answer'])
+            is_correct = submitted_answer in question['answer_index']
+
+        # initialize the score in session if it doesn't exist
+        if 'score' not in session:
+            session['score'] = 0
+
+        # increment the score if the answer is correct
+        if is_correct:
+            session['score'] += 1
+
+        feedback = question['correct_response'] if is_correct else question['wrong_response']
+        return jsonify({
+            'is_correct': is_correct,
+            'feedback': feedback,
+            'next_question_id': str(int(id) + 1) if int(id) < len(quiz_questions) else None
+        })
+
     return render_template('quiz.html', question_num=id, question=question)
-  
+
 @app.route('/quiz_results', methods=['GET'])
 def quiz_results():
-    return render_template('quiz_results.html', results_text=quiz_results_text)
-
+    score = session.get('score', 0)
+    total_questions = len(quiz_questions)
+    # reset score for the next attempt
+    session['score'] = 0
+    
+    # feedback text based on the score
+    results_text = ""
+    if score == total_questions:
+        results_text = quiz_results_text[1]
+    else:
+        results_text = quiz_results_text[2]
+    
+    return render_template('quiz_results.html', score=score, total_questions=total_questions, results_text=results_text)
+    
+    
 @app.template_filter('youtube_id')
 def youtube_id_filter(s):
     """Extracts the video ID from a YouTube URL."""
