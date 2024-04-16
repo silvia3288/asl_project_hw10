@@ -217,4 +217,20 @@ body, .navbar, .navbar-expand-lg {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04); /* A light shadow for some depth */
 }
 
+.correct-answer {
+    color: green;
+    font-weight: bold;
+}
 
+.wrong-answer {
+    color: red;
+    font-weight: bold;
+}
+
+input[type="checkbox"]:disabled + label.correct-answer {
+    
+}
+
+input[type="checkbox"]:disabled + label.wrong-answer {
+    
+}
