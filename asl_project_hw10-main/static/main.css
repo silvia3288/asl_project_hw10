@@ -93,17 +93,18 @@
 }
 
 h1 {
-    font-family: 'Arial', sans-serif; /* You can choose a different font here */
+    font-family: 'Lato', sans-serif; /* Now using Lato */
     font-size: 2.5em; /* Larger font size */
-    font-weight: bold; /* Makes the text bold */
-    color: white; /* Deep purple color */
+    font-weight: bold; /* Makes the text bold - Lato 700 is bold */
+    color: white; /* This will be overwritten by the gradient */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
     background-image: linear-gradient(white, white); /* Gradient effect */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px; /* Spacing below the title */
-    animation: fadeIn 2s ease-in-out; /* Animation for the title */
+
 }
+
 .custom-button {
     background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); /* Gradient effect */
     color: white;
@@ -268,7 +269,7 @@ video {
 }
 
 .custom-button:hover {
-    background-color: #260737; /* Darker green on hover */
+    background-color: rgba(103,78,167); /* Darker green on hover */
     color: white;
     text-decoration: underline;
 }
@@ -288,9 +289,9 @@ p.description {
 /* Base and Accent Color Definitions */
 :root {
     --base-color: pink; /* Set base color to pink */
-    --accent-color: rgba(56, 2, 75); /* Pink accent color */
+    --accent-color:rgba(103,78,167,0.5); /* Pink accent color */
     --light-grey: #f0f0f0; /* Light Grey */
-    --dark-grey: white; /* Dark Grey for text */
+    --dark-grey: rgb(47, 46, 46); /* Dark Grey for text */
     --navbar-pink: #ff69b4; /* Specific pink for the navbar */
 }
 
@@ -311,7 +312,7 @@ body {
     max-width: 1200px; /* Max width for larger screens */
     margin: 15px auto; /* Center the container */
     padding: 20px; /* Increase padding for better spacing inside the container */
-    background-color: rgba(56, 2, 75, 0.7); /* Semi-transparent white background */
+    background-color: rgba(103,78,167,0.5)    ; /* Semi-transparent white background */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     border-radius: 20px; /* Rounded corners */
     overflow: hidden; /* Ensures no content spills out */
@@ -346,7 +347,7 @@ body {
 .navbar-light .navbar-nav .nav-item.dropdown .nav-link.dropdown-toggle:hover,
 .navbar-light .navbar-nav .nav-item.dropdown .nav-link.dropdown-toggle:focus {
     background-color: var(--accent-color) !important; /* Highlight with accent color */
-    color: white !important; /* Change text color to white for visibility */
+    color: rgb(47, 46, 46) !important; /* Change text color to white for visibility */
 }
 
 /* Brand and button styles */
@@ -354,7 +355,7 @@ body {
 .navbar-light .navbar-toggler {
     font-family: inherit;  /* Ensure branding text matches the navbar */
     font-size: inherit; 
-    color: white !important ;/* Ensure consistent sizing */
+    color:  rgb(47, 46, 46) !important ;/* Ensure consistent sizing */
 }
 
 
