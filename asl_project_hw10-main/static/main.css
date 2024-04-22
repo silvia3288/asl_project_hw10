@@ -22,9 +22,9 @@
     margin: 0 auto; /* Center the container */
     padding: 20px;
 }
-.h3.text-left {
-    margin-bottom: 30px; /* Provides spacing below the header, adjust as needed */
-}
+
+
+
 
 .text-left p {
     margin-top: 0; /* Removes top margin for tighter text grouping */
@@ -96,6 +96,42 @@ h1 {
     font-family: 'Lato', sans-serif; /* Now using Lato */
     font-size: 2.5em; /* Larger font size */
     font-weight: bold; /* Makes the text bold - Lato 700 is bold */
+    color: white; /* This will be overwritten by the gradient */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
+    background-image: linear-gradient(white, white); /* Gradient effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px; /* Spacing below the title */
+
+}
+
+
+h5 {
+    font-family: 'Lato', sans-serif; /* Now using Lato */
+    font-size: 1.0em; /* Larger font size */ 
+    color: white; /* This will be overwritten by the gradient */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
+    background-image: linear-gradient(white, white); /* Gradient effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px; /* Spacing below the title */
+
+}
+
+h2 {
+    font-family: 'Lato', sans-serif; /* Now using Lato */
+    font-size: 2em; /* Larger font size */
+    color: white; /* This will be overwritten by the gradient */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
+    background-image: linear-gradient(white, white); /* Gradient effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px; /* Spacing below the title */
+
+}
+h3 {
+    font-family: 'Lato', sans-serif; /* Now using Lato */
+    font-size: 2em; /* Larger font size */
     color: white; /* This will be overwritten by the gradient */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
     background-image: linear-gradient(white, white); /* Gradient effect */
