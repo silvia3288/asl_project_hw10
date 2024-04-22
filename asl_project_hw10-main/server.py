@@ -289,26 +289,46 @@ def youtube_id_filter(s):
     # return an empty string if the URL does not seem to be a YouTube URL
     return ''
 
+# Define the length filter
+@app.template_filter('length')
+def length_filter(s):
+    return len(s)
 
+# Make sure the filter is registered
+app.jinja_env.filters['length'] = length_filter
 
-@app.route('/view/<id>')
+@app.route('/view/<int:id>')
 def view_item(id):
-    item = next((item for item in data if item["id"] == id), None)
+    item = next((item for item in data if item["id"] == str(id)), None)
     if item:
-        # Fetch details of similar items if available
-        similar_items_details = []
-        if "Similar_id" in item:
-            similar_items_details = [next((i for i in data if i.get("id") == similar_id), None) for similar_id in item["Similar_id"]]
+        index = data.index(item)
+        data_length = len(data)  # Total length of the data
+        category = "greetings" if index < 5 else "phrases"
         
-        # Check if link_to_menu is available
-        link_to_menu = item.get("link_to_menu")
-        
-        return render_template('view_item.html', item=item, similar_items=similar_items_details, link_to_menu=link_to_menu)
+        # Calculate next_id with wrapping
+        if category == "greetings" and index == 4:
+            next_id = data[5]["id"]  # First item of the phrases section
+        elif category == "phrases" and index == data_length - 1:
+            next_id = data[0]["id"]  # Wrap around to the first item of greetings
+        else:
+            next_id = data[index + 1]["id"]  # Next item in the current category
+
+        # Calculate prev_id with wrapping
+        if category == "greetings" and index == 0:
+            prev_id = data[data_length - 1]["id"]  # Last item of the phrases section
+        elif category == "phrases" and index == 5:
+            prev_id = data[4]["id"]  # Last item of the greetings section
+        else:
+            prev_id = data[index - 1]["id"]  # Previous item in the current category
+
+        return render_template('view_item.html', item=item, index=index, data_length=data_length, category=category, next_id=next_id, prev_id=prev_id)
     else:
         return "Item not found", 404
 
 
+
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    app.run(debug=True, port=5007)
 
 
