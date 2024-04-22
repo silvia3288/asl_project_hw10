@@ -291,98 +291,24 @@ def youtube_id_filter(s):
 
 
 
-@app.template_filter('length')
-def length_filter(s):
-    return len(s)
-
-# Make sure the filter is registered
-app.jinja_env.filters['length'] = length_filter
-
-
-
-
-# @app.route('/view/<int:id>')
-# def view_item(id):
-#     item = next((item for item in data if item["id"] == str(id)), None)
-#     if item:
-#         index = data.index(item)
-#         data_length = len(data)  # Handle length here
-#         category = "greetings" if index < 5 else "phrases"
-        
-#         # Logic for next_id with wrapping
-#         if category == "greetings" and index == 4:
-#             next_id = data[5]["id"]
-#         elif category == "phrases" and index == data_length - 1:
-#             next_id = data[0]["id"]
-#         else:
-#             next_id = data[index + 1]["id"]
-
-#         # Provide data_length to the template for comparison
-#         return render_template('view_item.html', item=item, index=index, data_length=data_length, category=category, next_id=next_id)
-#     else:
-#         return "Item not found", 404
-
-
-@app.route('/view/<int:id>')
+@app.route('/view/<id>')
 def view_item(id):
-    item = next((item for item in data if item["id"] == str(id)), None)
+    item = next((item for item in data if item["id"] == id), None)
     if item:
-        index = data.index(item)
-        data_length = len(data)  # Total length of the data
-        category = "greetings" if index < 5 else "phrases"
+        # Fetch details of similar items if available
+        similar_items_details = []
+        if "Similar_id" in item:
+            similar_items_details = [next((i for i in data if i.get("id") == similar_id), None) for similar_id in item["Similar_id"]]
         
-        # Calculate next_id with wrapping
-        if category == "greetings" and index == 4:
-            next_id = data[5]["id"]  # First item of the phrases section
-        elif category == "phrases" and index == data_length - 1:
-            next_id = data[0]["id"]  # Wrap around to the first item of greetings
-        else:
-            next_id = data[index + 1]["id"]  # Next item in the current category
-
-        # Calculate prev_id with wrapping
-        if category == "greetings" and index == 0:
-            prev_id = data[data_length - 1]["id"]  # Last item of the phrases section
-        elif category == "phrases" and index == 5:
-            prev_id = data[4]["id"]  # Last item of the greetings section
-        else:
-            prev_id = data[index - 1]["id"]  # Previous item in the current category
-
-        return render_template('view_item.html', item=item, index=index, data_length=data_length, category=category, next_id=next_id, prev_id=prev_id)
+        # Check if link_to_menu is available
+        link_to_menu = item.get("link_to_menu")
+        
+        return render_template('view_item.html', item=item, similar_items=similar_items_details, link_to_menu=link_to_menu)
     else:
         return "Item not found", 404
 
-# @app.route('/view/<int:id>')
-# def view_item(id):
-#     item = next((item for item in data if item["id"] == str(id)), None)
-#     if item:
-#         index = data.index(item)
-#         # Determining category based on index
-#         category = "greetings" if index < 5 else "phrases"
-        
-#         # Adjust next_id to wrap to the beginning of the other section
-#         if category == "greetings" and index == 4:  # Last greetings item
-#             next_id = data[5]["id"]  # First phrases item
-#         elif category == "phrases" and index == len(data) - 1:  # Last phrases item
-#             next_id = data[0]["id"]  # First greetings item
-#         else:
-#             next_id = data[index + 1]["id"]
-
-#         prev_id = None
-#         if index > 0:
-#             prev_id = data[index - 1]["id"]
-#         elif index == 0:
-#             prev_id = data[-1]["id"]
-
-#         similar_items_details = [next((i for i in data if i.get("id") == similar_id), None) for similar_id in item.get("Similar_id", [])]
-#         link_to_menu = item.get("link_to_menu")
-
-#         return render_template('view_item.html', item=item, prev_id=prev_id, next_id=next_id, category=category, similar_items=similar_items_details, link_to_menu=link_to_menu)
-#     else:
-#         return "Item not found", 404
-
-
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5006)
+    app.run(debug=True, port=5002)
 
 
