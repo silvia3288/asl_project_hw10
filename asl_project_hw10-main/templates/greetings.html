@@ -5,11 +5,11 @@
 <h2>Learn: Greetings</h2>
 <p>Choose a word or phrase below to start!</p>
 
-<div id="greetings-container" class="d-flex flex-wrap justify-content-around"> </div>
+<div id="greetings-container" class="d-flex flex-wrap justify-content-around"></div>
 
+<script src="{{ url_for('static', filename='check.js') }}"></script>
 <script>
     let greetings = {{ go_go|tojson|safe }};
-    console.log(greetings);
 
     function displayGreetings(items) {
         const container = document.getElementById('greetings-container');
@@ -18,8 +18,15 @@
             const buttonElement = document.createElement('button');
             buttonElement.className = 'greeting-btn';
             buttonElement.innerText = item.name;
+
+            // Check if the item has been visited
+            if (localStorage.getItem(item.id) === 'visited') {
+                buttonElement.classList.add('visited');  // Add a class to style differently or show a check mark
+            }
+
             buttonElement.onclick = function () {
-                window.location.href = "/view/" + item.id;
+                localStorage.setItem(item.id, 'visited');  // Mark as visited in localStorage
+                window.location.href = "/view/" + item.id;  // Navigate to the item's page
             };
             container.appendChild(buttonElement);
         });
@@ -29,6 +36,5 @@
         displayGreetings(greetings);
     });
 </script>
-
 
 {% endblock %}

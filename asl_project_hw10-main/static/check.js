@@ -1,15 +1,7 @@
-{% extends "layout.html" %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Parse the JSON data passed from the template
+    let phrases = JSON.parse('{{ popular_items|tojson|safe }}');
 
-{% block content %}
-<h2>Learn: Helpful Phrases</h2>
-<p>Choose a word or phrase below to start!</p>
-
-<div id="phrases-container" class="d-flex flex-wrap justify-content-around"></div>
-
-<script>
-    let phrases = {{ popular_items|tojson|safe }};
-    console.log(phrases);
-    
     function displayPhrases(items) {
         const container = document.getElementById('phrases-container');
         container.innerHTML = '';
@@ -31,16 +23,13 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        displayPhrases(phrases);
+    displayPhrases(phrases);
 
-        // Add the 'visited' class to previously visited phrases
-        phrases.forEach(item => {
-            const buttonElement = document.querySelector(`button[data-id="${item.id}"]`);
-            if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('visited');
-            }
-        });
+    // Add the 'visited' class to previously visited phrases
+    phrases.forEach(item => {
+        const buttonElement = document.querySelector(`button[data-id="${item.id}"]`);
+        if (localStorage.getItem(item.id) === 'visited') {
+            buttonElement.classList.add('visited');
+        }
     });
-</script>
-{% endblock %}
+});

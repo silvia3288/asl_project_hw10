@@ -369,8 +369,28 @@ body {
 }
 
 
+.greeting-btn {
+    position: relative;
+    overflow: hidden; /* Ensures the check mark doesn't spill outside the button */
+    /* Existing styles */
+}
 
 
+
+.visited {
+    background-color: #a4d7a4; /* Light green background for visited buttons */
+    color: #fff; /* White text */
+}
+
+/* Optional: If you want a check mark */
+.visited:after {
+    content: '✓';
+    color: green;
+    font-size: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
 
 
 .correct-answer {
