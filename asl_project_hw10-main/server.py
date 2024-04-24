@@ -8,6 +8,13 @@ import re
 import random
 from urllib.parse import urlparse, parse_qs
 from flask import session
+import uuid
+
+
+# Generate a unique session identifier when the server starts
+session_id = str(uuid.uuid4())
+
+
 app = Flask(__name__)
 app.secret_key = 'secret_key'
 
@@ -55,7 +62,7 @@ data = [
         "image_steps": "https://kidscarehomehealth.com/wp-content/uploads/2022/08/KCHH-sign-language-goodbye.jpg",
         "video": "https://www.youtube.com/watch?v=4rOC5fNt-_k",
         
-       }, 
+       },
   {
         "id": "6",
         "name": "Thank you",
@@ -95,7 +102,7 @@ data = [
         "image_steps": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/bathroom.svg",
         "video": "https://www.youtube.com/watch?v=jeqwQxDWXwE",
         "pro_tip_text":  " Use your dominant hand for this sign",
-        }, 
+        },
 
   {
     "id": "11",
@@ -203,6 +210,7 @@ quiz_results_text = {
 # ROUTES
 
 
+
 @app.route('/')
 def home():
     # Selecting specific items to feature on the home page. Adjust the selection logic as needed.
@@ -223,7 +231,7 @@ def greetings():
 @app.route('/quiz', methods=['GET'])
 def quiz():
     # initialize score at the start of the quiz
-    session['score'] = 0  
+    session['score'] = 0
     return render_template('quiz.html')
 
 @app.route('/quiz/<id>', methods=['GET', 'POST'])
@@ -326,9 +334,10 @@ def view_item(id):
         return "Item not found", 404
 
 
+@app.context_processor
+def inject_session_id():
+    return {'session_id': session_id}
 
 
 if __name__ == '__main__':
     app.run(debug=True, port=5007)
-
-
