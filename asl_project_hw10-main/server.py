@@ -230,54 +230,49 @@ def greetings():
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
-    # initialize score at the start of the quiz
     session['score'] = 0
-    return render_template('quiz.html')
+    session['current_question_id'] = 1
+    return redirect(url_for('quiz_question', id=session['current_question_id']))
 
-@app.route('/quiz/<id>', methods=['GET', 'POST'])
+
+
+@app.route('/quiz/<int:id>', methods=['GET', 'POST'])
 def quiz_question(id):
-    question = quiz_questions[int(id)]
+    if id != session.get('current_question_id'):
+        
+        return redirect(url_for('quiz_question', id=session['current_question_id']))
+    
+    question = quiz_questions[id - 1] 
     if request.method == 'POST':
-        if question["if_multiple_choice"] == "true":
-            submitted_answers = request.get_json()['answer']
-            correct_indices = question['answer_index']
-            is_correct = set(submitted_answers) == set(correct_indices)
-        else:
-            submitted_answer = int(request.get_json()['answer'])
-            is_correct = submitted_answer in question['answer_index']
-
-        # initialize the score in session if it doesn't exist
-        if 'score' not in session:
-            session['score'] = 0
-
-        # increment the score if the answer is correct
+        submitted_answer = request.get_json()['answer']
+        is_correct = submitted_answer in question['answer_index']
         if is_correct:
             session['score'] += 1
-
+        session['current_question_id'] += 1
+        
         feedback = question['correct_response'] if is_correct else question['wrong_response']
         return jsonify({
             'is_correct': is_correct,
             'feedback': feedback,
-            'next_question_id': str(int(id) + 1) if int(id) < len(quiz_questions) else None
+            'next_question_id': session['current_question_id'] if session['current_question_id'] <= len(quiz_questions) else None
         })
 
     return render_template('quiz.html', question_num=id, question=question)
 
+
 @app.route('/quiz_results', methods=['GET'])
 def quiz_results():
+    if session.get('current_question_id') - 1 != len(quiz_questions):
+        return redirect(url_for('quiz_question', id=session['current_question_id']))
+
     score = session.get('score', 0)
     total_questions = len(quiz_questions)
-    # reset score for the next attempt
-    session['score'] = 0
-    
-    # feedback text based on the score
-    results_text = ""
-    if score == total_questions:
-        results_text = quiz_results_text[1]
-    else:
-        results_text = quiz_results_text[2]
-    
+    session.pop('score', None) 
+    session.pop('current_question_id', None)
+
+    results_text = quiz_results_text[1] if score == total_questions else quiz_results_text[2]
     return render_template('quiz_results.html', score=score, total_questions=total_questions, results_text=results_text)
+
     
     
 @app.template_filter('youtube_id')
