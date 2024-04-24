@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<h2>Learn: Helpful Phrases</h2>
+<h2>Learn: Greetings</h2>
 <p>Choose a word or phrase below to start!</p>
 
-<div id="phrases-container" class="d-flex flex-wrap justify-content-around"></div>
+<div id="greetings-container" class="d-flex flex-wrap justify-content-around"></div>
 
 <script>
+
      // Get the session identifier from the server
     const serverSessionId = '{{ session_id }}';
 
@@ -22,10 +23,10 @@
         localStorage.setItem('sessionId', serverSessionId);
     }
     
-    let phrases = {{ popular_items|tojson|safe }};
+    let greetings = {{ go_go|tojson|safe }};
 
-    function displayPhrases(items) {
-        const container = document.getElementById('phrases-container');
+    function displayGreetings(items) {
+        const container = document.getElementById('greetings-container');
         container.innerHTML = '';
         items.forEach(item => {
             const buttonElement = document.createElement('button');
@@ -42,11 +43,13 @@
                 window.location.href = "/view/" + item.id;
             };
             container.appendChild(buttonElement);
-        });
-    }
+    });
+}
+
+
 
     document.addEventListener('DOMContentLoaded', function() {
-        displayPhrases(phrases);
+        displayGreetings(greetings);
     });
 </script>
 
