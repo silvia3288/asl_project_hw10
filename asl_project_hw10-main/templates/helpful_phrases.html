@@ -7,6 +7,11 @@
 
 <div id="phrases-container" class="d-flex flex-wrap justify-content-around"></div>
 
+<form method="post" action="{{ url_for('phrases') }}">
+    <button type="submit">Complete Phrases Section</button>
+</form>
+
+
 <script>
      // Get the session identifier from the server
     const serverSessionId = '{{ session_id }}';

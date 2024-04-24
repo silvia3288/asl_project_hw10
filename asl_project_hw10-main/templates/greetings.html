@@ -7,19 +7,23 @@
 
 <div id="greetings-container" class="d-flex flex-wrap justify-content-around"></div>
 
-<script>
 
-     // Get the session identifier from the server
+<form method="post" action="{{ url_for('greetings') }}" class="mt-3">
+    <button type="submit" class="btn btn-primary">Complete Greetings Section</button>
+</form>
+
+<script>
+    
     const serverSessionId = '{{ session_id }}';
 
-    // Check if the stored session identifier matches the server session identifier
+    
     const storedSessionId = localStorage.getItem('sessionId');
 
     if (storedSessionId !== serverSessionId) {
-        // Clear all local storage items related to visited items
+        
         localStorage.clear();
 
-        // Store the new session identifier in localStorage
+        
         localStorage.setItem('sessionId', serverSessionId);
     }
     
@@ -30,23 +34,22 @@
         container.innerHTML = '';
         items.forEach(item => {
             const buttonElement = document.createElement('button');
-            buttonElement.className = 'greeting-btn';
+            buttonElement.className = 'greeting-btn btn btn-secondary m-1';
             buttonElement.innerText = item.name;
 
-            // Check if the item has been visited
+            
             if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('visited');
+                buttonElement.classList.add('btn-success'); 
             }
 
             buttonElement.onclick = function () {
                 localStorage.setItem(item.id, 'visited');
+                buttonElement.classList.add('btn-success');
                 window.location.href = "/view/" + item.id;
             };
             container.appendChild(buttonElement);
-    });
-}
-
-
+        });
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
         displayGreetings(greetings);
@@ -54,3 +57,4 @@
 </script>
 
 {% endblock %}
+

@@ -214,25 +214,34 @@ def home():
     featured_items = [data[1], data[2], data[3]]  # Example: using the last two items for display
     return render_template('home.html', featured_items=featured_items)
 
-@app.route('/phrases')
+@app.route('/greetings', methods=['GET', 'POST'])
+def greetings():
+    if request.method == 'POST':
+        session['completed_greetings'] = True
+        flash('Greetings section completed!', 'success')
+        return redirect(url_for('home'))
+
+    go_go = data[0:5]
+    return render_template('greetings.html', go_go=go_go)
+
+@app.route('/phrases', methods=['GET', 'POST'])
 def phrases():
-    session['completed_phrases'] = True
+    if request.method == 'POST':
+        session['completed_phrases'] = True
+        flash('Phrases section completed!', 'success')
+        return redirect(url_for('home'))
+
     popular_items = data[5:]
     return render_template('helpful_phrases.html', popular_items=popular_items)
 
 
-@app.route('/greetings')
-def greetings():
-    session['completed_greetings'] = True 
-    go_go = data[0:5]
-    return render_template('greetings.html', go_go=go_go)
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
-    if not (session.get('completed_greetings') and session.get('completed_phrases')):
+    if not session.get('completed_greetings') or not session.get('completed_phrases'):
         flash('Please complete all required sections before starting the quiz.', 'error')
         return redirect(url_for('home'))
-    
+
     session['score'] = 0
     session['current_question_id'] = 1
     return redirect(url_for('quiz_question', id=session['current_question_id']))
@@ -240,30 +249,39 @@ def quiz():
 
 
 
+
+
 @app.route('/quiz/<int:id>', methods=['GET', 'POST'])
 def quiz_question(id):
+    if 'current_question_id' not in session:
+        flash('Please start the quiz from the beginning.', 'error')
+        return redirect(url_for('quiz'))
+
     if id != session.get('current_question_id'):
         return redirect(url_for('quiz_question', id=session['current_question_id']))
-    
+
     question = quiz_questions.get(id)
     if not question:
         return "Question not found", 404
-    
+
     if request.method == 'POST':
         submitted_answer = request.get_json()['answer']
         is_correct = set(submitted_answer) == set(question['answer_index'])
+        
         if is_correct:
             session['score'] += 1
         session['current_question_id'] += 1
-        
+
         feedback = question['correct_response'] if is_correct else question['wrong_response']
-        return jsonify({
+        response_data = {
             'is_correct': is_correct,
             'feedback': feedback,
             'next_question_id': session['current_question_id'] if session['current_question_id'] <= len(quiz_questions) else None
-        })
+        }
+        return jsonify(response_data)
 
     return render_template('quiz.html', question=question, question_num=id)
+
 
 
 
