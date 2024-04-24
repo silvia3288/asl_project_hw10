@@ -239,13 +239,15 @@ def quiz():
 @app.route('/quiz/<int:id>', methods=['GET', 'POST'])
 def quiz_question(id):
     if id != session.get('current_question_id'):
-        
         return redirect(url_for('quiz_question', id=session['current_question_id']))
     
-    question = quiz_questions[id - 1] 
+    question = quiz_questions.get(id)
+    if not question:
+        return "Question not found", 404
+    
     if request.method == 'POST':
         submitted_answer = request.get_json()['answer']
-        is_correct = submitted_answer in question['answer_index']
+        is_correct = set(submitted_answer) == set(question['answer_index'])
         if is_correct:
             session['score'] += 1
         session['current_question_id'] += 1
@@ -257,7 +259,8 @@ def quiz_question(id):
             'next_question_id': session['current_question_id'] if session['current_question_id'] <= len(quiz_questions) else None
         })
 
-    return render_template('quiz.html', question_num=id, question=question)
+    return render_template('quiz.html', question=question, question_num=id)
+
 
 
 @app.route('/quiz_results', methods=['GET'])
