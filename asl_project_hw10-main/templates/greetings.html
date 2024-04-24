@@ -2,17 +2,30 @@
 
 {% block content %}
 
-<h2>Learn: Greetings</h2>
+<h2>Learn: Helpful Phrases</h2>
 <p>Choose a word or phrase below to start!</p>
 
-<div id="greetings-container" class="d-flex flex-wrap justify-content-around"></div>
+<div id="phrases-container" class="d-flex flex-wrap justify-content-around"></div>
 
-<script src="{{ url_for('static', filename='check.js') }}"></script>
 <script>
-    let greetings = {{ go_go|tojson|safe }};
+     // Get the session identifier from the server
+    const serverSessionId = '{{ session_id }}';
 
-    function displayGreetings(items) {
-        const container = document.getElementById('greetings-container');
+    // Check if the stored session identifier matches the server session identifier
+    const storedSessionId = localStorage.getItem('sessionId');
+
+    if (storedSessionId !== serverSessionId) {
+        // Clear all local storage items related to visited items
+        localStorage.clear();
+
+        // Store the new session identifier in localStorage
+        localStorage.setItem('sessionId', serverSessionId);
+    }
+    
+    let phrases = {{ popular_items|tojson|safe }};
+
+    function displayPhrases(items) {
+        const container = document.getElementById('phrases-container');
         container.innerHTML = '';
         items.forEach(item => {
             const buttonElement = document.createElement('button');
@@ -21,19 +34,19 @@
 
             // Check if the item has been visited
             if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('visited');  // Add a class to style differently or show a check mark
+                buttonElement.classList.add('visited');
             }
 
             buttonElement.onclick = function () {
-                localStorage.setItem(item.id, 'visited');  // Mark as visited in localStorage
-                window.location.href = "/view/" + item.id;  // Navigate to the item's page
+                localStorage.setItem(item.id, 'visited');
+                window.location.href = "/view/" + item.id;
             };
             container.appendChild(buttonElement);
         });
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        displayGreetings(greetings);
+        displayPhrases(phrases);
     });
 </script>
 
