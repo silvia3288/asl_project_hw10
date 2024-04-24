@@ -1,14 +1,11 @@
-from flask import Flask
-from flask import render_template
-from flask import Response, request, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, Response, flash
 from collections import defaultdict
 from markupsafe import Markup, escape
-from flask import Flask, render_template, request, redirect, url_for
 import re
 import random
 from urllib.parse import urlparse, parse_qs
-from flask import session
 import uuid
+
 
 
 # Generate a unique session identifier when the server starts
@@ -216,23 +213,30 @@ def home():
     # Selecting specific items to feature on the home page. Adjust the selection logic as needed.
     featured_items = [data[1], data[2], data[3]]  # Example: using the last two items for display
     return render_template('home.html', featured_items=featured_items)
+
 @app.route('/phrases')
 def phrases():
-    # For simplicity, selecting the first three items as popular. Adjust as needed.
+    session['completed_phrases'] = True
     popular_items = data[5:]
     return render_template('helpful_phrases.html', popular_items=popular_items)
 
+
 @app.route('/greetings')
 def greetings():
-    # Filtered data for various cuisines
-    on_go = data[0:5]
-    return render_template('greetings.html', go_go=on_go)
+    session['completed_greetings'] = True 
+    go_go = data[0:5]
+    return render_template('greetings.html', go_go=go_go)
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
+    if not (session.get('completed_greetings') and session.get('completed_phrases')):
+        flash('Please complete all required sections before starting the quiz.', 'error')
+        return redirect(url_for('home'))
+    
     session['score'] = 0
     session['current_question_id'] = 1
     return redirect(url_for('quiz_question', id=session['current_question_id']))
+
 
 
 

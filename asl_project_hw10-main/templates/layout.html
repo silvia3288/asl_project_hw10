@@ -30,7 +30,14 @@
                 </div>
             </div>
 
-            <a class="navbar-brand" href="/quiz">Quiz</a>
+            <a href="{{ url_for('quiz') }}"{% if not lessons_completed %} 
+                data-toggle="tooltip" title="Please complete all lessons before starting the quiz."
+                class="disabled-link"
+                onclick="return false;"
+            {% endif %}>
+                Start Quiz
+            </a>
+
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,6 +56,11 @@
     <!-- External JavaScript file -->
     <script src="{{ url_for('static', filename='people.js') }}"></script>
     <script src="check.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();  // This initializes all tooltips
+        });
+    </script>
     
 </body>
 </html>
