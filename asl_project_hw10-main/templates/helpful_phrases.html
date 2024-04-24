@@ -1,15 +1,29 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <h2>Learn: Helpful Phrases</h2>
 <p>Choose a word or phrase below to start!</p>
 
 <div id="phrases-container" class="d-flex flex-wrap justify-content-around"></div>
 
 <script>
-    let phrases = {{ popular_items|tojson|safe }};
-    console.log(phrases);
+     // Get the session identifier from the server
+    const serverSessionId = '{{ session_id }}';
+
+    // Check if the stored session identifier matches the server session identifier
+    const storedSessionId = localStorage.getItem('sessionId');
+
+    if (storedSessionId !== serverSessionId) {
+        // Clear all local storage items related to visited items
+        localStorage.clear();
+
+        // Store the new session identifier in localStorage
+        localStorage.setItem('sessionId', serverSessionId);
+    }
     
+    let phrases = {{ popular_items|tojson|safe }};
+
     function displayPhrases(items) {
         const container = document.getElementById('phrases-container');
         container.innerHTML = '';
@@ -33,14 +47,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         displayPhrases(phrases);
-
-        // Add the 'visited' class to previously visited phrases
-        phrases.forEach(item => {
-            const buttonElement = document.querySelector(`button[data-id="${item.id}"]`);
-            if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('visited');
-            }
-        });
     });
 </script>
+
 {% endblock %}
