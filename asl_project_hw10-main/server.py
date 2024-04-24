@@ -1,3 +1,4 @@
+
 from flask import Flask
 from flask import render_template
 from flask import Response, request, jsonify
@@ -8,6 +9,21 @@ import re
 import random
 from urllib.parse import urlparse, parse_qs
 from flask import session
+import uuid
+
+from datetime import datetime
+import pytz
+
+# Get the current time as server start time
+server_start_time = datetime.now(pytz.utc).isoformat()
+
+
+
+# Generate a unique session identifier when the server starts
+session_id = str(uuid.uuid4())
+
+
+
 app = Flask(__name__)
 app.secret_key = 'secret_key'
 
@@ -202,6 +218,9 @@ quiz_results_text = {
 
 # ROUTES
 
+@app.context_processor
+def inject_session_id():
+    return {'session_id': session_id}
 
 @app.route('/')
 def home():
@@ -325,10 +344,10 @@ def view_item(id):
     else:
         return "Item not found", 404
 
-
+@app.context_processor
+def inject_server_start_time():
+    return {'server_start_time': server_start_time}
 
 
 if __name__ == '__main__':
     app.run(debug=True, port=5007)
-
-

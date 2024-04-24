@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <h2>Learn: Helpful Phrases</h2>
 <p>Choose a word or phrase below to start!</p>
 
@@ -8,8 +9,7 @@
 
 <script>
     let phrases = {{ popular_items|tojson|safe }};
-    console.log(phrases);
-    
+
     function displayPhrases(items) {
         const container = document.getElementById('phrases-container');
         container.innerHTML = '';
@@ -33,14 +33,7 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         displayPhrases(phrases);
-
-        // Add the 'visited' class to previously visited phrases
-        phrases.forEach(item => {
-            const buttonElement = document.querySelector(`button[data-id="${item.id}"]`);
-            if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('visited');
-            }
-        });
     });
 </script>
+
 {% endblock %}

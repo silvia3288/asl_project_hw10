@@ -38,7 +38,7 @@ $(document).ready(function(){
         $.each(question["images"], function(index, value){
             let choice = $('<img class="img-responsive img-fluid draggable" data-index="' + index + '">');
             choice.attr("src", value);
-            $("#imgs_drag").append(choice);
+            $("#imgs_drag").append(choice);   
         });
 
 

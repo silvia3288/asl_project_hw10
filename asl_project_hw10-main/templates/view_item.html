@@ -46,10 +46,17 @@
         </div>
         <div class="col-md-6 text-right">
             {% if prev_id %}
-                <a href="{{ url_for('view_item', id=prev_id) }}" class="btn btn-secondary">Previous Word</a>
+                <!-- Modify the 'Previous Word' button -->
+                <button id="prev-word" class="btn btn-secondary">Previous Word</button>
+                <script>
+                    document.getElementById('prev-word').addEventListener('click', function() {
+                        localStorage.setItem('{{ prev_id }}', 'visited'); // Mark the previous item as visited
+                        window.location.href = "{{ url_for('view_item', id=prev_id) }}"; // Navigate to the previous item's page
+                    });
+                </script>
             {% endif %}
             {% if next_id %}
-                <a href="{{ url_for('view_item', id=next_id) }}" class="btn btn-secondary">
+                <button id="next-word" class="btn btn-secondary">
                     {% if category == 'greetings' and index == 4 %}
                         Next Section: Helpful Phrases
                     {% elif category == 'phrases' and index == data_length - 1 %}
@@ -57,7 +64,13 @@
                     {% else %}
                         Next Word
                     {% endif %}
-                </a>
+                </button>
+                <script>
+                    document.getElementById('next-word').addEventListener('click', function() {
+                        localStorage.setItem('{{ next_id }}', 'visited'); // Mark the next item as visited
+                        window.location.href = "{{ url_for('view_item', id=next_id) }}"; // Navigate to the next item's page
+                    });
+                </script>
             {% endif %}
         </div>
     </div>
@@ -66,3 +79,4 @@
     <p>Item not found.</p>
 {% endif %}
 {% endblock %}
+

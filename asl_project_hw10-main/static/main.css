@@ -23,8 +23,38 @@
     padding: 20px;
 }
 
+.interactive-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
 
+.interactive-card:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
 
+}
+
+.card-link {
+    color: #5a5958; /* Bootstrap primary color, adjust as necessary */
+    text-decoration: none;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    transition: text-decoration 0.3s ease;
+
+}
+
+.interactive-card:active .card-link,
+.interactive-card:focus .card-link {
+    text-decoration: underline;
+}
+
+.card-img-top {
+    width: 100%;  /* Makes the image take the full width of the card */
+    height: 300px;  /* Sets a fixed height for all images */
+    object-fit: cover;  /* Ensures the image covers the area without distorting aspect ratio */
+}
 
 .text-left p {
     margin-top: 0; /* Removes top margin for tighter text grouping */
@@ -57,7 +87,7 @@
 
 
 
-.asl-button {
+/*.asl-button {
     background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); /* Gradient effect */
     display: inline-block; /* Inline-block for better control */
     color: white; /* White text */
@@ -68,14 +98,14 @@
     margin-bottom: 20px; /* Space between button and image */
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     cursor: pointer; /* Indicates it's clickable */
-}
+}*/
 
 
-.asl-button:hover {
+/*.asl-button:hover {
     background-color: #260737; 
     color:white;
     text-decoration: underline;
-}
+}*/
 
 
 
@@ -84,6 +114,7 @@
     margin: 0 auto; /* Center the image */
     max-width: 100%; /* Ensures the image is not bigger than its container */
     height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
 }
 
 #hello_div {
@@ -93,7 +124,7 @@
 }
 
 h1 {
-    font-family: 'Lato', sans-serif; /* Now using Lato */
+    font-family: 'Trebuchet MS', sans-serif; /* Now using Lato */
     font-size: 2.5em; /* Larger font size */
     font-weight: bold; /* Makes the text bold - Lato 700 is bold */
     color: white; /* This will be overwritten by the gradient */
@@ -363,8 +394,8 @@ body {
 
 /* Navbar font styles */
 .navbar {
-    font-family: 'Arial', sans-serif;  /* Consistent font family */
-    font-size: 1rem;  /* Standard font size */
+    font-family: 'Trebuchet MS', sans-serif;  /* Consistent font family */
+    font-size: 18px;  /* Standard font size */
     color: var(--dark-grey);  /* Consistent text color */
 }
 
@@ -422,11 +453,21 @@ body {
 /* Optional: If you want a check mark */
 .visited:after {
     content: '✓';
-    color: green;
-    font-size: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
     position: absolute;
-    top: 0px;
+    top: 10px;
     right: 0px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 }
 
 
