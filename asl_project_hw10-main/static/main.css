@@ -471,6 +471,11 @@ body {
     color: red;
     font-weight: bold;
 }
+.disabled-link {
+    pointer-events: none;  
+    color: #ccc;  
+    cursor: default;
+}
 
 input[type="checkbox"]:disabled + label.correct-answer {
     

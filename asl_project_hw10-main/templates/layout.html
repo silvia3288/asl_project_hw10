@@ -56,6 +56,20 @@
         {% block content %}
         {% endblock %}
     </div>
+    {% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let completedGreetings = localStorage.getItem('completed_greetings') === 'true';
+        let completedPhrases = localStorage.getItem('completed_phrases') === 'true';
+        
+        if (completedGreetings && completedPhrases) {
+            document.getElementById('quiz-button').style.display = 'block';
+        } else {
+            document.getElementById('quiz-button').style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}
 
     <!-- External JavaScript file -->
     <script src="{{ url_for('static', filename='people.js') }}"></script>

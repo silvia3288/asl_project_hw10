@@ -283,6 +283,10 @@ def start_quiz():
 
 @app.route('/quiz/<int:id>', methods=['GET', 'POST'])
 def quiz_question(id):
+    #added the first if as a test
+    if not (session.get('completed_greetings') and session.get('completed_phrases')):
+        flash('Please start the quiz from the beginning.', 'error')
+        return redirect(url_for('home'))
     if 'current_question_id' not in session:
         flash('Please start the quiz from the beginning.', 'error')
         return redirect(url_for('quiz'))
