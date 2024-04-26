@@ -20,54 +20,6 @@
 
 
 
-<!-- <script>
-    const serverSessionId = '{{ session_id }}';
-    const storedSessionId = localStorage.getItem('sessionId');
-
-    if (storedSessionId !== serverSessionId) {
-        localStorage.clear();
-        localStorage.setItem('sessionId', serverSessionId);
-    }
-    
-    let greetings = {{ go_go|tojson|safe }};
-    let allVisited = true;  // Assume all greetings are visited at the start
-
-    function displayGreetings(items) {
-        const container = document.getElementById('greetings-container');
-        container.innerHTML = '';
-        items.forEach(item => {
-            const buttonElement = document.createElement('button');
-            buttonElement.className = 'greeting-btn btn btn-secondary m-1';
-            buttonElement.innerText = item.name;
-
-            if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('visited');
-            } else {
-                allVisited = false;  // Set to false if any item hasn't been visited
-            }
-
-            buttonElement.onclick = function () {
-                localStorage.setItem(item.id, 'visited');
-                window.location.href = "/view/" + item.id;
-                checkAllVisited();  // Recheck if all items are visited
-            };
-            container.appendChild(buttonElement);
-        });
-        checkAllVisited();  // Initial check
-    }
-
-    function checkAllVisited() {
-        if (allVisited) {
-            document.getElementById('quiz-button').style.display = 'block';
-        } else {
-            document.getElementById('quiz-button').style.display = 'none';
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        displayGreetings(greetings);
-    });
-</script> -->
 <script>
     const serverSessionId = '{{ session_id }}';
     const storedSessionId = localStorage.getItem('sessionId');
@@ -127,6 +79,9 @@
         displayGreetings(greetings);
     });
 </script>
+
+
+
 
 
 

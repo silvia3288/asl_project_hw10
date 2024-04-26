@@ -268,6 +268,15 @@ def quiz():
     return redirect(url_for('quiz_question', id=session['current_question_id']))
 
 
+#test route 
+@app.route('/start_quiz', methods=['GET'])
+def start_quiz():
+    # Check if the necessary sections have been completed
+    if not session.get('completed_greetings') or not session.get('completed_phrases'):
+        flash('Please complete all required sections before starting the quiz.', 'error')
+        return redirect(url_for('home'))
+    return render_template('start_quiz.html')
+
 
 
 

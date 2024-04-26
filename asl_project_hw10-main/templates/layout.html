@@ -31,13 +31,13 @@
     
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('quiz') }}" 
-                    {% if not session.get('completed_greetings', False) or not session.get('completed_phrases', False) %}
+                    <a class="nav-link start-quiz-link" href="{{ url_for('start_quiz') }}"
+                        {% if not session.get('completed_greetings', False) or not session.get('completed_phrases', False) %}
                         data-toggle="tooltip" title="Please complete all lessons before starting the quiz."
                         class="disabled-link"
                         onclick="return false;"
                     {% endif %}>
-                        Start Quiz
+                 Start Quiz
                     </a>
                 </li>
             </ul>

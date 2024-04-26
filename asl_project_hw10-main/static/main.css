@@ -422,6 +422,12 @@ body {
     color: white !important;
 }
 
+.navbar-light .navbar-nav .nav-link.start-quiz-link:hover,
+.navbar-light .navbar-nav .nav-link.start-quiz-link:focus {
+    color: currentColor !important;  /* Keeps the current color */
+    background-color: transparent !important; /* Ensures background doesn't change */
+}
+
 
 .greeting-btn {
     position: relative;
