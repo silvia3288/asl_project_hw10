@@ -8,26 +8,29 @@
 <div id="greetings-container" class="d-flex flex-wrap justify-content-around"></div>
 
 
-<form method="post" action="{{ url_for('greetings') }}" class="mt-3">
-    <button type="submit" class="btn btn-primary">Complete Greetings Section</button>
+<!-- <form method="post" action="{{ url_for('greetings') }}" class="mt-3 d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary">Complete Helpful Phrases Section</button>
+</form> -->
+<form method="post" action="{{ url_for('phrases_page') }}" class="mt-3 d-flex justify-content-center">
+    <button type="submit" class="btn btn-primary">Go to Helpful Phrases Section</button>
 </form>
+<div id="quiz-button" style="display: none;" class="text-center mt-4">
+    <a href="{{ url_for('quiz') }}" class="btn btn-success">Start Quiz</a>
+</div>
 
-<script>
-    
+
+
+<!-- <script>
     const serverSessionId = '{{ session_id }}';
-
-    
     const storedSessionId = localStorage.getItem('sessionId');
 
     if (storedSessionId !== serverSessionId) {
-        
         localStorage.clear();
-
-        
         localStorage.setItem('sessionId', serverSessionId);
     }
     
     let greetings = {{ go_go|tojson|safe }};
+    let allVisited = true;  // Assume all greetings are visited at the start
 
     function displayGreetings(items) {
         const container = document.getElementById('greetings-container');
@@ -37,24 +40,95 @@
             buttonElement.className = 'greeting-btn btn btn-secondary m-1';
             buttonElement.innerText = item.name;
 
-            
             if (localStorage.getItem(item.id) === 'visited') {
-                buttonElement.classList.add('btn-success'); 
+                buttonElement.classList.add('visited');
+            } else {
+                allVisited = false;  // Set to false if any item hasn't been visited
             }
 
             buttonElement.onclick = function () {
                 localStorage.setItem(item.id, 'visited');
-                buttonElement.classList.add('btn-success');
                 window.location.href = "/view/" + item.id;
+                checkAllVisited();  // Recheck if all items are visited
             };
             container.appendChild(buttonElement);
         });
+        checkAllVisited();  // Initial check
+    }
+
+    function checkAllVisited() {
+        if (allVisited) {
+            document.getElementById('quiz-button').style.display = 'block';
+        } else {
+            document.getElementById('quiz-button').style.display = 'none';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        displayGreetings(greetings);
+    });
+</script> -->
+<script>
+    const serverSessionId = '{{ session_id }}';
+    const storedSessionId = localStorage.getItem('sessionId');
+
+    if (storedSessionId !== serverSessionId) {
+        localStorage.clear();
+        localStorage.setItem('sessionId', serverSessionId);
+    }
+    
+    let greetings = {{ go_go|tojson|safe }};
+    let allVisitedGreetings = true; // Assume all greetings are visited at the start
+
+    function displayGreetings(items) {
+        const container = document.getElementById('greetings-container');
+        container.innerHTML = '';
+        items.forEach(item => {
+            const buttonElement = document.createElement('button');
+            buttonElement.className = 'greeting-btn btn btn-secondary m-1';
+            buttonElement.innerText = item.name;
+
+            if (localStorage.getItem(item.id) === 'visited') {
+                buttonElement.classList.add('visited');
+            } else {
+                allVisitedGreetings = false; // Set to false if any item hasn't been visited
+            }
+
+            buttonElement.onclick = function () {
+                localStorage.setItem(item.id, 'visited');
+                window.location.href = "/view/" + item.id;
+                checkAllVisitedGreetings(); // Recheck if all items are visited
+            };
+            container.appendChild(buttonElement);
+        });
+        checkAllVisitedGreetings(); // Initial check
+    }
+
+    function checkAllVisitedGreetings() {
+        if (allVisitedGreetings) {
+            localStorage.setItem('completed_greetings', 'true');
+        } else {
+            localStorage.removeItem('completed_greetings');
+        }
+        checkQuizAvailability(); // Check if both sections are completed
+    }
+
+    function checkQuizAvailability() {
+        const completedGreetings = localStorage.getItem('completed_greetings') === 'true';
+        const completedPhrases = localStorage.getItem('completed_phrases') === 'true';
+        if (completedGreetings && completedPhrases) {
+            document.getElementById('quiz-button').style.display = 'block';
+        } else {
+            document.getElementById('quiz-button').style.display = 'none';
+        }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         displayGreetings(greetings);
     });
 </script>
+
+
 
 {% endblock %}
 

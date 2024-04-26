@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             buttonElement.className = 'greeting-btn';
             buttonElement.innerText = item.name;
 
-            // Check if the item has been visited
+            // Check if the item has been visitedphrases-container
             if (localStorage.getItem(item.id) === 'visited') {
                 buttonElement.classList.add('visited');
             }
