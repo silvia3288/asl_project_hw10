@@ -21,6 +21,10 @@
 
 
 <script>
+
+    let visitedGreetingsCount = 0;
+    let totalGreetings = 5;
+
     const serverSessionId = '{{ session_id }}';
     const storedSessionId = localStorage.getItem('sessionId');
 
@@ -43,6 +47,7 @@
             if (localStorage.getItem(item.id) === 'visited') {
                 buttonElement.classList.add('visited');
             } else {
+                visitedGreetingsCount++;
                 allVisitedGreetings = false; // Set to false if any item hasn't been visited
             }
 

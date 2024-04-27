@@ -26,6 +26,9 @@
         localStorage.setItem('sessionId', serverSessionId);
     }
 
+    let visitedPhrasesCount = 0;
+    let totalPhrases = 6;
+
     let phrases = {{ popular_items|tojson|safe }};
     let allVisitedPhrases = true; // Assume all phrases are visited at the start
 
@@ -40,6 +43,7 @@
             if (localStorage.getItem(item.id) === 'visited') {
                 buttonElement.classList.add('visited');
             } else {
+                visitedPhrasesCount++;
                 allVisitedPhrases = false; // Set to false if any item hasn't been visited
             }
 

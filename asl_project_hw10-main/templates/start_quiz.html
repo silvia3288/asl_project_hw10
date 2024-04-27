@@ -8,8 +8,6 @@
 <div class="container text-center mt-4">
     <h2>Ready to Test Your Knowledge?</h2>
     <p class="lead">You've completed the Greetings and Helpful Phrases sections. Click below to start the quiz!</p>
-    <div id="quiz-button" style="display: none;" class="text-center mt-4">
-        <a href="{{ url_for('quiz') }}" class="btn btn-success">Start Quiz</a>
-    </div>
+    <a href="{{ url_for('quiz') }}" class="btn btn-lg mt-4 custom-button">Start Quiz</a>
 </div>
 {% endblock %}
