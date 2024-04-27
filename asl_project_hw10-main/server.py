@@ -268,7 +268,23 @@ def quiz():
     return redirect(url_for('quiz_question', id=session['current_question_id']))
 
 
-#test route 
+
+
+#intermiediate quiz route fro greetings
+@app.route('/greetings_quiz', methods=['GET', 'POST'])
+def greetings_quiz():
+ # Check if the necessary sections have been completed
+
+ return render_template('greetings_quiz.html')
+
+#intermiediate quiz route for phrases
+@app.route('/phrases_quiz', methods=['GET', 'POST'])
+def phrases_quiz():
+ # Check if the necessary sections have been completed
+ return render_template('phrases_quiz.html')
+
+
+#test route
 @app.route('/start_quiz', methods=['GET'])
 def start_quiz():
     # Check if the necessary sections have been completed
@@ -276,8 +292,6 @@ def start_quiz():
         flash('Please complete all required sections before starting the quiz.', 'error')
         return redirect(url_for('home'))
     return render_template('start_quiz.html')
-
-
 
 
 
@@ -299,7 +313,9 @@ def quiz_question(id):
         return "Question not found", 404
 
     if request.method == 'POST':
-        submitted_answer = request.get_json()['answer']
+        submitted_answer = request.get_json().get('answer', [])
+        if not isinstance(submitted_answer, list):
+                    submitted_answer = [submitted_answer]
         is_correct = set(submitted_answer) == set(question['answer_index'])
         
         if is_correct:

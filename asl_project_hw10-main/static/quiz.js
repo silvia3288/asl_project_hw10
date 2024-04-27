@@ -58,7 +58,7 @@ $(document).ready(function(){
                     url: '/quiz/' + question.id,
                     type: 'POST',
                     contentType: 'application/json',
-                    data: JSON.stringify({ answer: draggedItemId }),
+                    data: JSON.stringify({ answer: [draggedItemId] }),
                     dataType: 'json',
                     success: function(response) {
                         $('#drag_feedback').text(response.feedback).show();
@@ -105,9 +105,13 @@ $(document).ready(function(){
 
     // submit button and ajax call for feedback
     $('#submit_ans').click(function() {
+            // const answers = $("input[type='checkbox']:checked").map(function() {
+            //     return parseInt($(this).attr('id').replace('choice', ''));
+            // }).get();
+
             const answers = $("input[type='checkbox']:checked").map(function() {
-                return parseInt($(this).attr('id').replace('choice', ''));
-            }).get();
+                return parseInt($(this).val()); // Make sure it's the correct method to fetch the value
+            }).get(); // This should naturally be an array
 
             // ajax post to submit answers
             $.ajax({
