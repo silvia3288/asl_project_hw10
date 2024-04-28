@@ -3,23 +3,25 @@
 {% block content %}
 
 <h2>Learn: Greetings</h2>
-<p>Choose a word or phrase below to start!</p>
-
-<div id="greetings-container" class="d-flex flex-wrap justify-content-around"></div>
-
-
-<!-- <form method="post" action="{{ url_for('greetings') }}" class="mt-3 d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary">Complete Helpful Phrases Section</button>
-</form> -->
-<form method="post" action="{{ url_for('phrases_page') }}" class="mt-3 d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary">Go to Helpful Phrases Section</button>
-</form>
-<div id="quiz-button" style="display: none;" class="text-center mt-4">
-    <a href="{{ url_for('quiz') }}" class="btn btn-success">Start Quiz</a>
+<p style="font-weight: bold ">Choose a word or phrase below to start!</p>
+<div class="container">
+    <div id="greetings-container" class="d-flex flex-wrap justify-content-around" style="padding-top: 15px; padding-bottom: 15px;"></div>
 </div>
 
-<div id="custom-button">
-    <a href="{{ url_for('greetings_quiz') }}" class="btn btn-success">Greetings Quiz</a>
+<br>
+<br>
+<p class="text-center" style="color: #4d4d53">Learned all the Greetings? Test yourself or go to the Help Phrases Section: </p>
+<div class="mt-3 d-flex flex-wrap justify-content-center">
+    <!-- Update this button to match the 'Helpful Phrase Section' button in your first screenshot -->
+    <a href="{{ url_for('greetings_quiz') }}" class="btn custom-button">Greetings Quiz</a>
+    <button type="button" class="btn btn-primary custom-button" onclick="window.location.href='{{ url_for('phrases_page') }}'">Helpful Phrases Section</button>
+</div>
+<br>
+
+
+
+<div class="d-flex flex-wrap text-center">
+
 </div>
 
 <script>
@@ -43,7 +45,7 @@
         container.innerHTML = '';
         items.forEach(item => {
             const buttonElement = document.createElement('button');
-            buttonElement.className = 'greeting-btn btn btn-secondary m-1';
+            buttonElement.className = 'greeting-btn btn  m-1';
             buttonElement.innerText = item.name;
 
             if (localStorage.getItem(item.id) === 'visited') {

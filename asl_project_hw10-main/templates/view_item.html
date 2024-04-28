@@ -34,14 +34,14 @@
             {% endif %}
         </div>
     </div>
-
+</div>
     <!-- Navigation buttons -->
     <div class="row mt-3">
         <div class="col-md-6 text-left">
             {% if category == "greetings" %}
-                <a href="{{ url_for('greetings') }}" class="btn btn-secondary">Home</a>
+                <a href="{{ url_for('greetings') }}" class="btn btn-secondary">All Greetings</a>
             {% elif category == "phrases" %}
-                <a href="{{ url_for('phrases') }}" class="btn btn-secondary">Home</a>
+                <a href="{{ url_for('phrases') }}" class="btn btn-secondary">All Phrases</a>
             {% endif %}
         </div>
         <div class="col-md-6 text-right">
