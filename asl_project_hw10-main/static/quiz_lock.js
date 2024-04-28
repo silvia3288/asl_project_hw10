@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!completedGreetings || !completedPhrases) {
             console.log("Lessons not completed, preventing default action");
             event.preventDefault();
+            $('#incompleteModal').modal('show'); 
         }
     }
 

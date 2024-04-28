@@ -481,6 +481,55 @@ body {
     cursor: default;
 }
 
+
+
+
+.btn-quiz {
+    background-image: none; /* Remove the gradient background */
+    color: #212529; /* Default link color for Bootstrap primary buttons */
+    box-shadow: none; /* Remove the box-shadow */
+    padding: 0.5rem 1rem; /* Standard padding to match Bootstrap's nav-link */
+    border-radius: 0.25rem; /* Rounded corners to match Bootstrap's nav-link */
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Smooth transition for hover effects */
+    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+    font-size: 1rem; /* Standard font size */
+    line-height: 1.5; /* Line height to match Bootstrap's nav-link */
+    text-align: center; /* Center the text inside the button */
+    vertical-align: middle; /* Align the text vertically */
+    border: 1px solid transparent; /* Standard border to match Bootstrap's nav-link */
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+/* Hover state to match Bootstrap's nav-link */
+.btn-quiz:hover, 
+.btn-quiz:focus {
+    color: white; /* Color for hover and focus states */
+    text-decoration: none; /* Remove text-decoration on hover */
+    background-color: green; /* Slight background change on hover to match Bootstrap's nav-link */
+    border-color:green; /* Border color to match */
+}
+
+/* Active state to match Bootstrap's nav-link */
+.btn-quiz:not(:disabled):not(.disabled).active, 
+.btn-quiz:not(:disabled):not(.disabled):active {
+    color: #212529; /* Text color for active state */
+    background-color: rgba(103,78,167); /* Background color for active state */
+    border-color: rgba(103,78,167); /* Border color for active state */
+}
+
+/* Disabled state to match Bootstrap's nav-link */
+.btn-quiz.disabled, 
+.btn-quiz:disabled {
+    color: #212529; /* Text color for disabled state */
+    background-color: rgba(103,78,167,0.001); /* Background color for disabled state */
+    border-color: rgba(103,78,167,0.001); /* Border color for disabled state */
+}
+
+/* Since .btn-primary is a button but we want it to look like a link, we remove the border */
+.btn-quiz {
+    border: none !important; /* Remove border */
+}
+
 input[type="checkbox"]:disabled + label.correct-answer {
     
 }

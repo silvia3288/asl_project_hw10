@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script src="https://unpkg.com/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <title>People</title>
@@ -32,21 +34,9 @@
                 </div>
             </div>
 
-<!--            <ul class="navbar-nav">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="asl-button" href="{{ url_for('start_quiz') }}"-->
-<!--                        {% if not session.get('completed_greetings', False) or not session.get('completed_phrases', False) %}-->
-<!--                        data-toggle="tooltip" title="Please complete all lessons before starting the quiz."-->
-<!--                        class="disabled-link"-->
-<!--                        onclick="return false;"-->
-<!--                    {% endif %}>-->
-<!--                 Start Quiz-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a id="start-quiz-btn" class="asl-button" href="{{ url_for('start_quiz') }}">Start Quiz</a>
+                    <a id="start-quiz-btn" class="btn-quiz" href="{{ url_for('start_quiz') }}">Start Quiz</a>
                 </li>
             </ul>
 
@@ -89,6 +79,7 @@
     <script src="{{ url_for('static', filename='quiz_lock.js') }}"></script>
     <script src="{{ url_for('static', filename='people.js') }}"></script>
     <script src="check.js"></script>
+    
     
 </body>
 </html>
