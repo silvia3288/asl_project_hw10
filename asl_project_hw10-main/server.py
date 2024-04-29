@@ -222,6 +222,25 @@ phrases_quiz_questions = {
     }
 }
 
+greetings_quiz_questions = {
+    1: {
+        "id": 1,
+        "image": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/goodbye.svg",
+        "answers": ["goodbye", "bye"] 
+    },
+    2: {
+        "id": 2,
+        "image": "https://o.quizlet.com/RvOsMQy.mazGui2N1rnI6A.jpg",
+        "answers": ["nice to meet you"] 
+    },
+    3: {
+        "id": 3,
+        "image": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/hello.svg",
+        "answers": ["hello", "hi"] 
+    },
+
+}
+
 # ROUTES
 
 
@@ -277,7 +296,6 @@ def phrases_page():
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
-    print(session.get('completed_phrases'))
     if not session.get('completed_greetings') or not session.get('completed_phrases'):
         flash('Please complete all required sections before starting the quiz.', 'error')
         return redirect(url_for('home'))
@@ -292,9 +310,8 @@ def quiz():
 #intermiediate quiz route fro greetings
 @app.route('/greetings_quiz', methods=['GET', 'POST'])
 def greetings_quiz():
- # Check if the necessary sections have been completed
-
- return render_template('greetings_quiz.html')
+    # Check if the necessary sections have been completed
+    return render_template('greetings_quiz.html', questions=greetings_quiz_questions)
 
 #intermiediate quiz route for phrases
 @app.route('/phrases_quiz', methods=['GET', 'POST'])

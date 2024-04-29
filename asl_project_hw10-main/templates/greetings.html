@@ -13,7 +13,7 @@
 <p class="text-center" style="color: #4d4d53">Learned all the Greetings? Test yourself or go to the Help Phrases Section: </p>
 <div class="mt-3 d-flex flex-wrap justify-content-center">
     <!-- Update this button to match the 'Helpful Phrase Section' button in your first screenshot -->
-    <a href="{{ url_for('greetings_quiz') }}" class="btn custom-button">Greetings Quiz</a>
+    <a href="{{ url_for('greetings_quiz') }}" class="btn custom-button" id="g-quiz">Greetings Quiz</a>
     <button type="button" class="btn btn-primary custom-button" onclick="window.location.href='{{ url_for('phrases_page') }}'">Helpful Phrases Section</button>
 </div>
 <br>
@@ -71,7 +71,8 @@
         } else {
             localStorage.removeItem('completed_greetings');
         }
-        checkQuizAvailability(); // Check if both sections are completed
+        //checkQuizAvailability(); // Check if both sections are completed
+        checkIntermediateQuizAvail();
     }
 
     function checkQuizAvailability() {
@@ -81,6 +82,16 @@
             document.getElementById('quiz-button').style.display = 'block';
         } else {
             document.getElementById('quiz-button').style.display = 'none';
+        }
+    }
+    function checkIntermediateQuizAvail(){
+        const completedGreetings = localStorage.getItem('completed_greetings') === 'true';
+        if(completedGreetings){
+            $('#g-quiz').removeClass('disabled');
+        }
+        else{
+            $('#g-quiz').addClass('disabled');
+            
         }
     }
 
