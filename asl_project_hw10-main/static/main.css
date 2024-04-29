@@ -89,6 +89,8 @@
 }
 
 
+
+
 .asl-button:hover {
     background-color: #260737; 
     color:white;
@@ -138,7 +140,7 @@ h5 {
 
 h2 {
     font-family: 'Lato', sans-serif; /* Now using Lato */
-    font-size: 2em; /* Larger font size */
+    font-size: 2.5em; /* Larger font size */
     color: white; /* This will be overwritten by the gradient */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
     background-image: linear-gradient(white, white); /* Gradient effect */
@@ -159,42 +161,85 @@ h3 {
 
 }
 
-.custom-button {
-    background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); /* Gradient effect */
-    display: inline-block; /* Inline-block for better control */
-    color: white; /* White text */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-    text-decoration: none; /* No underline */
-    padding: 10px 20px; /* Padding around text */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 20px; /* Space between button and image */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    cursor: pointer; /* Indicates it's clickable */
+
+ p{
+     /*font-family: 'Trebuchet MS', sans-serif; !* Now using Lato *!*/
+     font-size: 18px; /* Larger font size */
+     font-weight: 30px;
+     font-style: italic;
+     color: #424247;
+     padding-bottom: 10px;
+ }
+
+/*.custom-button {*/
+/*    background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); !* Gradient effect *!*/
+/*    display: inline-block; !* Inline-block for better control *!*/
+/*    color: white; !* White text *!*/
+/*    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); !* Enhanced shadow *!*/
+/*    text-decoration: none; !* No underline *!*/
+/*    padding: 10px 20px; !* Padding around text *!*/
+/*    border-radius: 5px; !* Rounded corners *!*/
+/*    margin-bottom: 20px; !* Space between button and image *!*/
+/*    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;*/
+/*    cursor: pointer; !* Indicates it's clickable *!*/
 
 
-}
+/*}*/
+
+ .custom-button {
+     /*background-image: linear-gradient( #a4508b, #5f0a87); !* Updated gradient *!*/
+     background-image: linear-gradient(#6e0b9a, #b6569d);
+     color: white;
+     padding: 10px 25px; /* Adjust padding as needed */
+     border: none;
+     border-radius: 20px; /* More rounded corners */
+     font-size: 16px; /* Adjust font size as needed */
+     margin: 0 10px; /* Spacing around the button */
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+     transition: all 0.3s ease;
+ }
+
+ .custom-button:hover {
+     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+     transform: scale(1.05); /* Slightly enlarge on hover */
+ }
 
 
 
 
 
-.greeting-btn {
-    background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); /* Gradient effect */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 6px; /* Slightly more rounded */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-    cursor: pointer; /* Indicates it's clickable */
-}
+/*.greeting-btn {*/
+/*    background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); !* Gradient effect *!*/
+/*    color: white;*/
+/*    padding: 10px 20px;*/
+/*    text-decoration: none;*/
+/*    border-radius: 6px; !* Slightly more rounded *!*/
+/*    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;*/
+/*    margin-bottom: 20px;*/
+/*    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); !* Enhanced shadow *!*/
+/*    cursor: pointer; !* Indicates it's clickable *!*/
+/*}*/
+ .greeting-btn {
+     /*background-image: linear-gradient(rgba(181, 12, 221, 0.95), rgba(206, 102, 209, 0.95));*/
+     background-image: linear-gradient(rgb(239, 31, 224), rgb(204, 95, 112)); /* Gradient effect */
+     color: white;
+     padding: 10px 25px; /* Adjust padding as needed */
+     border: none;
+     border-radius: 15px; /* More rounded corners */
+     font-size: 16px; /* Adjust font size as needed */
+     margin: 0 10px; /* Spacing around the button */
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+     transition: all 0.3s ease;
+ }
+
 
 .greeting-btn:hover {
     background-color: #5a4963; /* Darker purple on hover */
     color: white; /* Change text color to yellow on hover */
     cursor: pointer;
     text-decoration: underline;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 
@@ -240,12 +285,17 @@ h3 {
 
 /* Video Styles */
 
-
-video {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
+ .video-wrapper {
+     border-radius: 20px; /* Adjust the px value to get the desired rounded corner effect */
+     overflow: hidden; /* This ensures that the video corners are clipped to the border radius */
+     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+     max-width: 100%;
+     height: 98%;
+ }
+/*video {*/
+/*    max-width: 100%;*/
+/*    height: 90%;*/
+/*}*/
 
 
 /* Image Steps Styles */
@@ -448,6 +498,7 @@ body {
 .visited {
     background-color: #a4d7a4; /* Light green background for visited buttons */
     color: #fff; /* White text */
+    overflow: visible;
 }
 
 /* Optional: If you want a check mark */
@@ -457,7 +508,7 @@ body {
     font-size: 12px;
     font-weight: bold;
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 0px;
     transform: translateY(-50%);
     width: 20px;
@@ -467,6 +518,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 
