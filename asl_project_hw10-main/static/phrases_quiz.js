@@ -36,7 +36,12 @@ $(document).ready(function(){
             }
             $('#submit_hp').prop('disabled', true);
         }
-    })
+    });
+    $('#hp-box3').keypress(function(e){
+        if(e.which == 13){
+            $('#submit_hp').click();
+        }
+    });
 })
 
 function displayQuestions(){

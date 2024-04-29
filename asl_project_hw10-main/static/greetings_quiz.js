@@ -36,7 +36,12 @@ $(document).ready(function(){
             }
             $('#submit_g').prop('disabled', true);
         }
-    })
+    });
+    $('#g-box3').keypress(function(e){
+        if(e.which == 13){
+            $('#submit_g').click();
+        }
+    });
 })
 
 function displayQuestions(){
