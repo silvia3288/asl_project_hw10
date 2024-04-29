@@ -250,6 +250,9 @@ h3 {
     border-radius: 25px;
     border: 2px solid var(--dark-grey);
 }
+#results_div h5 {
+    color: red; /* Replace with the color you want */
+}
 
 /* General Styles */
 .container {
