@@ -1,7 +1,51 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h2>Quiz: Helpful Phrases</h2>
+<script type="text/javascript" src="{{ url_for('static', filename = 'phrases_quiz.js') }}"></script>
+
+<script>
+    let questions = {{questions|tojson}}
+</script>
+<style>
+    #submit_div{
+        margin-left: 50%; 
+        text-align: right;
+    }
+</style>
+
+<h2 class="mb-2">Check Your Understanding: Helpful Phrases</h2>
+<p class="font-weight-bold quiz-sub-head">Identify the following signs:</p>
 <div class="container mt-3 text-center">
+    <div class="row text-white">
+        <div class="col-4" >
+            <div id="hp-q1">
+                <p class="text-align-left mb-0">1.</p>
+            </div>
+            <input type="text" class="form-control w-75 ml-auto mr-auto" id="hp-box1" placeholder="Type answer here...">
+            <div id="hp-res1" class="mt-2 interm-quiz-res"></div>
+        </div>
+        <div class="col-4">
+            <div id="hp-q2">
+                <p class="text-align-left mb-0">2.</p>
+            </div>
+            <input type="text" class="form-control w-75 ml-auto mr-auto" id="hp-box2" placeholder="Type answer here...">
+            <div id="hp-res2" class="mt-2 interm-quiz-res"></div>
+        </div>
+        <div class="col-4">
+            <div id="hp-q3">
+                <p class="text-align-left mb-0">3.</p>
+            </div>
+            <input type="text" class="form-control w-75 ml-auto mr-auto" id="hp-box3" placeholder="Type answer here...">
+            <div id="hp-res3" class="mt-2 interm-quiz-res"></div>
+        </div>
+    </div>
+    <div class="mt-4 mb-0 float-left w-50 text-align-left">        
+        <a href="{{ url_for('phrases') }}" class="btn btn-secondary">Home</a>
+    </div>    
+    <div class="mt-4 mb-0" id="submit_div"> 
+        <button type="submit" class="btn btn-success" id="submit_hp">Submit</button>
+    </div>
+    
+    
 </div>
 {% endblock %}

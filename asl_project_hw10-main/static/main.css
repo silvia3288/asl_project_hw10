@@ -217,6 +217,10 @@ h3 {
     text-align: right;
 }
 
+.text-align-left{
+    text-align: left;
+}
+
 /* Drag and drop */
 
 .draggable:hover{
@@ -528,6 +532,17 @@ body {
 /* Since .btn-primary is a button but we want it to look like a link, we remove the border */
 .btn-quiz {
     border: none !important; /* Remove border */
+}
+
+.quiz-sub-head{
+    color: var(--dark-grey);
+}
+
+.interm-quiz-res{
+    margin-left: 45px;
+    margin-right: 45px;
+    border-radius: 0.25rem;
+    padding: 10px;
 }
 
 input[type="checkbox"]:disabled + label.correct-answer {

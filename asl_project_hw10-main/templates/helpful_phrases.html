@@ -16,7 +16,7 @@
 </div>
 
 <div id="custom-button">
-    <a href="{{ url_for('phrases_quiz') }}" class="btn btn-success">Helpful Phrases Quiz</a>
+    <a href="{{ url_for('phrases_quiz') }}" class="btn btn-success" id="hp-quiz">Helpful Phrases Quiz</a>
 </div>
 
 
@@ -67,6 +67,7 @@
             localStorage.removeItem('completed_phrases');
         }
         checkQuizAvailability(); // Check if both sections are completed
+        checkIntermediateQuizAvail();
     }
 
     function checkQuizAvailability() {
@@ -76,6 +77,16 @@
             document.getElementById('quiz-button').style.display = 'block';
         } else {
             document.getElementById('quiz-button').style.display = 'none';
+        }
+    }
+
+    function checkIntermediateQuizAvail(){
+        const completedPhrases = localStorage.getItem('completed_phrases') === 'true';
+        if(completedPhrases){
+            $('#hp-quiz').removeClass('disabled');
+        }
+        else{
+            $('#hp-quiz').addClass('disabled');
         }
     }
 
