@@ -250,8 +250,15 @@ h3 {
     border-radius: 25px;
     border: 2px solid var(--dark-grey);
 }
-#results_div h5 {
-    color: red; /* Replace with the color you want */
+#results_div h6 {
+    color: #6e0b9a !important; /* Sets the text color to purple */
+    font-weight: bold !important; /* Makes the text bold */
+}
+
+#results_div p {
+    color: black !important;
+     /* Sets the paragraph text color to black */
+    
 }
 
 /* General Styles */
