@@ -321,7 +321,7 @@ h3 {
 .pro-tip {
     margin-top: auto;  /* Ensures it aligns to the bottom inside a flex container */
     padding: 20px;     /* Adequate padding for content */
-    color: white;      /* High contrast text color for readability */
+    color: white !important;      /* High contrast text color for readability */
     background-color: #bb08cbf1; /* Vibrant background color */
     border-radius: 8px; /* Soft rounded corners for a friendly look */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
@@ -329,6 +329,11 @@ h3 {
     position: relative; /* Needed for pseudo-elements if using for shapes */
     overflow: hidden; /* Ensures no content spills out, important if using pseudo-elements */
 }
+.image-pro-tip-container .pro-tip p {
+    color: white !important;
+}
+
+
 
 .pro-tip-arrow {
     content: "";

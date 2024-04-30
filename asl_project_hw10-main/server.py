@@ -23,7 +23,7 @@ data = [
         "ASL Translation": "Hello",
         "image_steps": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/hello.svg",
         "video": "https://www.youtube.com/watch?v=Yth5OaV2H5c",
-        "pro_tip_text": "There are two ways of saying hello, shooce the one that fits your mood",
+        "pro_tip_text": "There are two ways of saying hello, choose the one that fits your mood",
        
     },
     {
@@ -90,7 +90,7 @@ data = [
     "ASL Translation": "PLEASE",
         "image_steps": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/please.svg",
         "video": "https://www.youtube.com/watch?v=wtNN6H27L3k",
-        "pro_tip_text":  "Use dominant hand and circular motion counterclockwise",
+        "pro_tip_text":  "Use dominant hand and circular motion counter clockwise",
        },
   {
     "id": "10",
