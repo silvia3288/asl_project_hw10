@@ -298,8 +298,6 @@ def phrases_page():
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
-    print(viewed_greetings)
-    print(viewed_phrases)
     if len(viewed_greetings) + len(viewed_phrases) < 11:
         flash('Please complete all required sections before starting the quiz.', 'error')
         return redirect(url_for('home'))

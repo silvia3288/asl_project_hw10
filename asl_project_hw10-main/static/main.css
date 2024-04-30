@@ -612,6 +612,12 @@ body {
     padding: 10px;
 }
 
+.choice-checkbox{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
 input[type="checkbox"]:disabled + label.correct-answer {
     
 }

@@ -25,6 +25,7 @@ $(document).ready(function(){
                 } else {
                     label = $('<label></label><br><br>');
                     label.attr("for", 'choice' + index);
+                    label.attr("class", 'text-white');
                     label.html(value);
                     checkbox.attr("name", value);
                     checkbox.attr("value", index);

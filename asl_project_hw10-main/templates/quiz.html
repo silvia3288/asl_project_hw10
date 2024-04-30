@@ -9,8 +9,14 @@
     let question = {{question|tojson}}
 </script>
 
+<style>
+    label{
+        vertical-align: bottom;
+    }
+</style>
+
 <div class="container mt-3 text-center">
-    <h6 id="quiz_ques"></h6>
+    <h4 id="quiz_ques" class="mb-5"></h4>
     {% if question["if_multiple_choice"] == "true" %}
     <div class="row">
         {% if question["images"]|length != 0 %}
@@ -20,11 +26,11 @@
         {% endif %}
         <div class="col-6" style="margin: auto;">
             <div class="row">
-                <div class="col-6">
-                    <div id="ans_choices">
+                <div class="col-8">
+                    <div id="ans_choices" class="fs-5 text-left">
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <div class="row">
                         <br>
                         <br>
