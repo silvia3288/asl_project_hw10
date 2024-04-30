@@ -243,6 +243,8 @@ greetings_quiz_questions = {
 
 # ROUTES
 
+viewed_greetings = []
+viewed_phrases = []
 
 
 @app.route('/')
@@ -296,7 +298,9 @@ def phrases_page():
 
 @app.route('/quiz', methods=['GET'])
 def quiz():
-    if not session.get('completed_greetings') or not session.get('completed_phrases'):
+    print(viewed_greetings)
+    print(viewed_phrases)
+    if len(viewed_greetings) + len(viewed_phrases) < 11:
         flash('Please complete all required sections before starting the quiz.', 'error')
         return redirect(url_for('home'))
 
@@ -323,19 +327,20 @@ def phrases_quiz():
 @app.route('/start_quiz', methods=['GET'])
 def start_quiz():
     # Check if the necessary sections have been completed
-    if not session.get('completed_greetings') or not session.get('completed_phrases'):
+    # print(session.get('completed_phrases'))
+    # if not session.get('completed_greetings') or not session.get('completed_phrases'):
+
+    if len(viewed_greetings) + len(viewed_phrases) < 11:
         flash('Please complete all required sections before starting the quiz.', 'error')
         return redirect(url_for('home'))
-    return render_template('start_quiz.html')
+    else:
+        return render_template('start_quiz.html')
 
 
 
 @app.route('/quiz/<int:id>', methods=['GET', 'POST'])
 def quiz_question(id):
     #added the first if as a test
-    if not (session.get('completed_greetings') and session.get('completed_phrases')):
-        flash('Please start the quiz from the beginning.', 'error')
-        return redirect(url_for('home'))
     if 'current_question_id' not in session:
         flash('Please start the quiz from the beginning.', 'error')
         return redirect(url_for('quiz'))
@@ -418,6 +423,11 @@ def view_item(id):
         data_length = len(data)  # Total length of the data
         category = "greetings" if index < 5 else "phrases"
         
+        if index < 5 and index not in viewed_greetings:
+            viewed_greetings.append(index)
+        if index >= 5 and index not in viewed_phrases:
+            viewed_phrases.append(index)
+
         # Calculate next_id with wrapping
         if category == "greetings" and index == 4:
             next_id = data[5]["id"]  # First item of the phrases section
