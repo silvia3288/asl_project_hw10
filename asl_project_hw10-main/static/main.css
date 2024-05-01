@@ -260,6 +260,7 @@ p{
 }
 #results_div h6 {
     color: #6e0b9a !important; /* Sets the text color to purple */
+    font-size: 20px;
     font-weight: bold !important; /* Makes the text bold */
 }
 
