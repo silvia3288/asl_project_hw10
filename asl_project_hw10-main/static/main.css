@@ -1,5 +1,5 @@
- {
-    text-decoration: none !important; 
+{
+    text-decoration: none !important;
 }
 .btn-primary{
     background-image: linear-gradient(#44024ae6 , #eb7ff5f1); /* Gradient effect */
@@ -37,22 +37,22 @@
     padding: 20px;
 }
 
- /*#quiz-button {*/
- /*    position: absolute;*/
- /*    bottom: 20px;*/
- /*    right: 20px;*/
- /*}*/
+/*#quiz-button {*/
+/*    position: absolute;*/
+/*    bottom: 20px;*/
+/*    right: 20px;*/
+/*}*/
 
 
 .text-left p {
     margin-top: 0; /* Removes top margin for tighter text grouping */
 }
 
-.video-wrapper iframe, 
+.video-wrapper iframe,
 .button-section img {
     height: 400px; /* Example height, adjust according to your needs */
     width: 100%; /* Makes sure the width is responsive */
-    
+
 }
 
 
@@ -76,13 +76,15 @@
 
 
 .asl-button {
-    background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); /* Gradient effect */
+    /*background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); !* Gradient effect *!*/
+    background-image: linear-gradient(rgb(239, 31, 224), rgb(204, 95, 112)); /* Gradient effect */
     display: inline-block; /* Inline-block for better control */
     color: white; /* White text */
+    font-weight: bold;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
     text-decoration: none; /* No underline */
     padding: 10px 20px; /* Padding around text */
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 15px; /* Rounded corners */
     margin-bottom: 20px; /* Space between button and image */
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     cursor: pointer; /* Indicates it's clickable */
@@ -90,11 +92,11 @@
 
 
 
-
 .asl-button:hover {
-    background-color: #260737; 
+    background-color: #260737;
     color:white;
     text-decoration: underline;
+    transform: scale(1.15); /* Slightly enlarge on hover */
 }
 
 
@@ -128,7 +130,7 @@ h1 {
 
 h5 {
     font-family: 'Lato', sans-serif; /* Now using Lato */
-    font-size: 1.0em; /* Larger font size */ 
+    font-size: 1.0em; /* Larger font size */
     color: white; /* This will be overwritten by the gradient */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
     background-image: linear-gradient(white, white); /* Gradient effect */
@@ -160,16 +162,22 @@ h3 {
     margin-bottom: 20px; /* Spacing below the title */
 
 }
+h4 {
+    font-family: 'Lato', sans-serif; /* Now using Lato */
+    color: ivory; /* This will be overwritten by the gradient */
+    font-style: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Text shadow for depth */
+}
 
 
- p{
-     /*font-family: 'Trebuchet MS', sans-serif; !* Now using Lato *!*/
-     font-size: 18px; /* Larger font size */
-     font-weight: 30px;
-     font-style: italic;
-     color: #424247;
-     padding-bottom: 10px;
- }
+p{
+    /*font-family: 'Trebuchet MS', sans-serif; !* Now using Lato *!*/
+    font-size: 18px; /* Larger font size */
+    font-weight: 30px;
+    font-style: italic;
+    color: #424247;
+    padding-bottom: 10px;
+}
 
 /*.custom-button {*/
 /*    background-image: linear-gradient(#bb08cbf1 , #eb7ff5f1); !* Gradient effect *!*/
@@ -186,23 +194,23 @@ h3 {
 
 /*}*/
 
- .custom-button {
-     /*background-image: linear-gradient( #a4508b, #5f0a87); !* Updated gradient *!*/
-     background-image: linear-gradient(#6e0b9a, #b6569d);
-     color: white;
-     padding: 10px 25px; /* Adjust padding as needed */
-     border: none;
-     border-radius: 20px; /* More rounded corners */
-     font-size: 16px; /* Adjust font size as needed */
-     margin: 0 10px; /* Spacing around the button */
-     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-     transition: all 0.3s ease;
- }
+.custom-button {
+    /*background-image: linear-gradient( #a4508b, #5f0a87); !* Updated gradient *!*/
+    background-image: linear-gradient(#6e0b9a, #b6569d);
+    color: white;
+    padding: 10px 25px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 20px; /* More rounded corners */
+    font-size: 18px; /* Adjust font size as needed */
+    margin: 0 10px; /* Spacing around the button */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
 
- .custom-button:hover {
-     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-     transform: scale(1.05); /* Slightly enlarge on hover */
- }
+.custom-button:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
 
 
 
@@ -219,18 +227,18 @@ h3 {
 /*    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); !* Enhanced shadow *!*/
 /*    cursor: pointer; !* Indicates it's clickable *!*/
 /*}*/
- .greeting-btn {
-     /*background-image: linear-gradient(rgba(181, 12, 221, 0.95), rgba(206, 102, 209, 0.95));*/
-     background-image: linear-gradient(rgb(239, 31, 224), rgb(204, 95, 112)); /* Gradient effect */
-     color: white;
-     padding: 10px 25px; /* Adjust padding as needed */
-     border: none;
-     border-radius: 15px; /* More rounded corners */
-     font-size: 16px; /* Adjust font size as needed */
-     margin: 0 10px; /* Spacing around the button */
-     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-     transition: all 0.3s ease;
- }
+.greeting-btn {
+    /*background-image: linear-gradient(rgba(181, 12, 221, 0.95), rgba(206, 102, 209, 0.95));*/
+    background-image: linear-gradient(rgb(239, 31, 224), rgb(204, 95, 112)); /* Gradient effect */
+    color: white;
+    padding: 10px 25px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 15px; /* More rounded corners */
+    font-size: 18px; /* Adjust font size as needed */
+    margin: 0 10px; /* Spacing around the button */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
 
 
 .greeting-btn:hover {
@@ -257,8 +265,8 @@ h3 {
 
 #results_div p {
     color: black !important;
-     /* Sets the paragraph text color to black */
-    
+    /* Sets the paragraph text color to black */
+
 }
 
 /* General Styles */
@@ -280,28 +288,39 @@ h3 {
 
 .draggable:hover{
     cursor: move;
-    background-color: lightyellow;
-    
+    background-color: lavenderblush;
+    transform: scale(1.05);
+
 }
 .dropped{
-    background-color: lightgray;
+    background-color: #efebeb;
+    /*background-color: ivory;*/
     border-width: 2px;
-    border-color: black;
-    border-style: solid;
+    border-color: grey;
+    /*!*border-width: 20px;*!*/
+    border-style: dashed;
+    border-radius: 20px;
+    right: 2%;
 }
 .ui-state-highlight{
-    background-color: yellow;
+    background-color: lavenderblush;
+}
+
+#imgs_drag{
+    max-width: 85%;
+    border-radius: 10px;
+    left: 50%;
 }
 
 /* Video Styles */
 
- .video-wrapper {
-     border-radius: 20px; /* Adjust the px value to get the desired rounded corner effect */
-     overflow: hidden; /* This ensures that the video corners are clipped to the border radius */
-     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-     max-width: 100%;
-     height: 98%;
- }
+.video-wrapper {
+    border-radius: 20px; /* Adjust the px value to get the desired rounded corner effect */
+    overflow: hidden; /* This ensures that the video corners are clipped to the border radius */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    max-width: 100%;
+    height: 98%;
+}
 /*video {*/
 /*    max-width: 100%;*/
 /*    height: 90%;*/
@@ -312,20 +331,19 @@ h3 {
 .img-fluid {
     width: 100%; /* Set a width or max-width */
     height: 250px; /* Set a fixed height */
-    object-fit: contain; /* This will ensure the image fits within the dimensions without being stretched */
     border-radius: 10px;
-    
+
 }
 
 /* Pro Tip Section Styles */
 .pro-tip {
-    margin-top: auto;  /* Ensures it aligns to the bottom inside a flex container */
-    padding: 20px;     /* Adequate padding for content */
-    color: white !important;      /* High contrast text color for readability */
-    background-color: #bb08cbf1; /* Vibrant background color */
-    border-radius: 8px; /* Soft rounded corners for a friendly look */
+    margin-top: 10px;  /* Ensures it aligns to the bottom inside a flex container */
+    padding: 25px;     /* Adequate padding for content */
+    color: white;      /* High contrast text color for readability */
+    background-image: linear-gradient(rgb(239, 31, 224), rgb(204, 95, 112)); /* Vibrant background color */
+    border-radius: 15px; /* Soft rounded corners for a friendly look */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
-    transform: skew(-10deg); /* Skews the div for a dynamic visual effect */
+    transform: skew(-8deg); /* Skews the div for a dynamic visual effect */
     position: relative; /* Needed for pseudo-elements if using for shapes */
     overflow: hidden; /* Ensures no content spills out, important if using pseudo-elements */
 }
@@ -338,13 +356,13 @@ h3 {
 .pro-tip-arrow {
     content: "";
     position: absolute;
-    top: 70%; /* Position where the top of the arrow should start */
+    top: 65%; /* Position where the top of the arrow should start */
     left: 50%; /* Center horizontally relative to its container */
     width: 0; /* Necessary for the triangle */
     height: 0; /* Necessary for the triangle */
     border-left: 20px solid transparent; /* Left border transparent */
     border-right: 20px solid transparent; /* Right border transparent */
-    border-top: 20px solid #bb08cbf1; /* Top border visible forming the arrow pointing down */
+    border-top: 20px solid rgb(239, 31, 224); /* Top border visible forming the arrow pointing down */
     transform: translateX(-50%); /* Center the arrow horizontally */
     z-index: 1;
 }
@@ -459,7 +477,7 @@ body {
 }
 
 /* Apply consistent font styling to all navbar links */
-.navbar-light .navbar-nav .nav-link, 
+.navbar-light .navbar-nav .nav-link,
 .navbar-light .navbar-nav .dropdown-toggle {
     font-family: inherit;  /* Inherits the font family from the navbar */
     font-size: inherit;  /* Inherits the font size from the navbar */
@@ -468,7 +486,7 @@ body {
 
 
 /* Hover and focus states for navbar links */
-.navbar-light .navbar-nav .nav-link:hover, 
+.navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-item.dropdown .nav-link.dropdown-toggle:hover,
 .navbar-light .navbar-nav .nav-item.dropdown .nav-link.dropdown-toggle:focus {
@@ -477,10 +495,10 @@ body {
 }
 
 /* Brand and button styles */
-.navbar-light .navbar-brand, 
+.navbar-light .navbar-brand,
 .navbar-light .navbar-toggler {
     font-family: inherit;  /* Ensure branding text matches the navbar */
-    font-size: inherit; 
+    font-size: inherit;
     color:  rgb(47, 46, 46) !important ;/* Ensure consistent sizing */
 }
 
@@ -547,12 +565,20 @@ body {
     font-weight: bold;
 }
 .disabled-link {
-    pointer-events: none;  
-    color: #ccc;  
+    pointer-events: none;
+    color: #ccc;
     cursor: default;
 }
 
 
+.alert-success{
+    color: #363639;
+    background-color: #9ece9e;
+}
+.alert-danger{
+    color: #2c2c2e;
+    background-color: #dda5ac;
+}
 
 
 .btn-quiz {
@@ -561,7 +587,7 @@ body {
     box-shadow: none; /* Remove the box-shadow */
     padding: 0.5rem 1rem; /* Standard padding to match Bootstrap's nav-link */
     border-radius: 0.25rem; /* Rounded corners to match Bootstrap's nav-link */
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Smooth transition for hover effects */
+    transition: color 0.15s ease-in-out, background-image 0.15s ease-in-out, border-color 0.15s ease-in-out; /* Smooth transition for hover effects */
     cursor: pointer; /* Cursor to pointer to indicate it's clickable */
     font-size: 1rem; /* Standard font size */
     line-height: 1.5; /* Line height to match Bootstrap's nav-link */
@@ -572,26 +598,29 @@ body {
 }
 
 /* Hover state to match Bootstrap's nav-link */
-.btn-quiz:hover, 
+.btn-quiz:hover,
 .btn-quiz:focus {
     color: white; /* Color for hover and focus states */
     text-decoration: none; /* Remove text-decoration on hover */
-    background-color: green; /* Slight background change on hover to match Bootstrap's nav-link */
-    border-color:green; /* Border color to match */
+    background-image: linear-gradient(#6e0b9a, #b6569d); /* Slight background change on hover to match Bootstrap's nav-link */
+    border-color:transparent; /* Border color to match */
+    border-radius: 15px;
 }
 
 /* Active state to match Bootstrap's nav-link */
-.btn-quiz:not(:disabled):not(.disabled).active, 
+.btn-quiz:not(:disabled):not(.disabled).active,
 .btn-quiz:not(:disabled):not(.disabled):active {
     color: #212529; /* Text color for active state */
+    background-image: linear-gradient(#6e0b9a, #b6569d);
     background-color: rgba(103,78,167); /* Background color for active state */
     border-color: rgba(103,78,167); /* Border color for active state */
 }
 
 /* Disabled state to match Bootstrap's nav-link */
-.btn-quiz.disabled, 
+.btn-quiz.disabled,
 .btn-quiz:disabled {
-    color: #212529; /* Text color for disabled state */
+    /*color: white; !* Color for hover and focus states *!*/
+    /*color: #212529; !* Text color for disabled state *!*/
     background-color: rgba(103,78,167,0.001); /* Background color for disabled state */
     border-color: rgba(103,78,167,0.001); /* Border color for disabled state */
 }
@@ -612,16 +641,34 @@ body {
     padding: 10px;
 }
 
+
+#ques_img {
+    width: 400px; /* Ensuring the image is responsive and fits the container */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Margin below the image */
+    margin-left: 50px; /* Margin below the image */
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#ans_choices{
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+    /*padding: 10px;*/
+
+}
+
 .choice-checkbox{
     width: 25px;
     height: 25px;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 input[type="checkbox"]:disabled + label.correct-answer {
-    
+
 }
 
 input[type="checkbox"]:disabled + label.wrong-answer {
-    
+
 }

@@ -24,25 +24,25 @@ data = [
         "image_steps": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/hello.svg",
         "video": "https://www.youtube.com/watch?v=Yth5OaV2H5c",
         "pro_tip_text": "There are two ways of saying hello, choose the one that fits your mood",
-       
+
     },
     {
     "id": "2",
     "name": "What is your name?",
     "ASL Translation": "YOU-NAME-WHAT",
-        "image_steps": "https://assets.change.org/photos/6/hd/bt/qqhdbTcPDxXsNxI-800x450-noPad.jpg?1592899898",
+        "image_steps": "https://media.baamboozle.com/uploads/images/820398/1655476629_39457.jpeg",
         "video": "https://www.youtube.com/watch?v=6pZ_KvSXMOg",
         "pro_tip_text":  "Squint your eyebrows when asking a question that starts with the",
-       
+
   },
   {
     "id": "3",
     "name": "Nice to meet you",
     "ASL Translation": "NICE-MEET-YOU",
-        "image_steps": "https://slideplayer.com/slide/12841359/78/images/19/Nice+to+meet+you%21.jpg",
+        "image_steps": "https://us-static.z-dn.net/files/dd5/1c1d4aee72f8c5c7d2217cb17d957266.jpg",
         "video": "https://www.youtube.com/watch?v=k3BsgBGWc3I",
         "pro_tip_text":  " Always pair this with another greeting, such as “hello” or “good morning",
-       
+
   },
   {
     "id": "4",
@@ -58,7 +58,7 @@ data = [
    "ASL Translation": "GOODBYE",
         "image_steps": "https://kidscarehomehealth.com/wp-content/uploads/2022/08/KCHH-sign-language-goodbye.jpg",
         "video": "https://www.youtube.com/watch?v=4rOC5fNt-_k",
-        
+
        },
   {
         "id": "6",
@@ -66,7 +66,7 @@ data = [
         "ASL Translation": "THANK-YOU",
         "image_steps": "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/thank_you.svg",
         "video": "https://www.youtube.com/watch?v=EPlhDhll9mw",
-        
+
         },
     {
     "id": "7",
@@ -110,8 +110,8 @@ data = [
         "pro_tip_text":  "You can repeat the up-and-down motion of this sign without changing the meaning",
         }
 
-    
-  
+
+
 ]
 
 quiz_questions = {
@@ -168,7 +168,7 @@ quiz_questions = {
     6 : {
         "id": "6",
         "question": "Which of the following can be used when meeting someone new? Choose all that apply.",
-        "choices": ["https://assets.change.org/photos/6/hd/bt/qqhdbTcPDxXsNxI-800x450-noPad.jpg?1592899898", "https://slideplayer.com/slide/12841359/78/images/19/Nice+to+meet+you%21.jpg", "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/bathroom.svg"],
+        "choices": ["https://media.baamboozle.com/uploads/images/820398/1655476629_39457.jpeg", "https://us-static.z-dn.net/files/dd5/1c1d4aee72f8c5c7d2217cb17d957266.jpg", "https://res.cloudinary.com/spiralyze/image/upload/f_auto,w_auto/BabySignLanguage/DictionaryPages/bathroom.svg"],
         "answer_index": [0, 1],
         "if_multiple_choice": "true",
         "images" : [],

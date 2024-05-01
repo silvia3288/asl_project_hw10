@@ -13,7 +13,7 @@
             <h3 class="text-left">Sign Steps:</h3>
         </div>
     </div>
-    
+
     <!-- Video and Image in the same row with flex alignment -->
     <div class="row">
         <div class="col-lg-6 text-center">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-lg-6 d-flex flex-column justify-content-between image-pro-tip-container">
             <div class="text-center">
-                <img src="{{ item.image_steps }}" alt="Sign steps for '{{ item.name }}'" class="img-fluid">
+                <img src="{{ item.image_steps }}" alt="Sign steps for '{{ item.name }}'" class="img-fluid" style="border-radius: 20px; margin:auto">
             </div>
             {% if item.pro_tip_text %}
             <div class="pro-tip mt-3">
@@ -35,48 +35,48 @@
         </div>
     </div>
 </div>
-    <!-- Navigation buttons -->
-    <div class="row mt-3">
-        <div class="col-md-6 text-left">
-            {% if category == "greetings" %}
-                <a href="{{ url_for('greetings') }}" class="btn btn-secondary">All Greetings</a>
-            {% elif category == "phrases" %}
-                <a href="{{ url_for('phrases') }}" class="btn btn-secondary">All Phrases</a>
-            {% endif %}
-        </div>
-        <div class="col-md-6 text-right">
-            {% if prev_id %}
-                <!-- Modify the 'Previous Word' button -->
-                <button id="prev-word" class="btn btn-secondary">Previous Word</button>
-                <script>
-                    document.getElementById('prev-word').addEventListener('click', function() {
-                        localStorage.setItem('{{ prev_id }}', 'visited'); // Mark the previous item as visited
-                        window.location.href = "{{ url_for('view_item', id=prev_id) }}"; // Navigate to the previous item's page
-                    });
-                </script>
-            {% endif %}
-            {% if next_id %}
-                <button id="next-word" class="btn btn-secondary">
-                    {% if category == 'greetings' and index == 4 %}
-                        Next Section: Helpful Phrases
-                    {% elif category == 'phrases' and index == data_length - 1 %}
-                        Next Section: Greetings
-                    {% else %}
-                        Next Word
-                    {% endif %}
-                </button>
-                <script>
-                    document.getElementById('next-word').addEventListener('click', function() {
-                        localStorage.setItem('{{ next_id }}', 'visited'); // Mark the next item as visited
-                        window.location.href = "{{ url_for('view_item', id=next_id) }}"; // Navigate to the next item's page
-                    });
-                </script>
-            {% endif %}
-        </div>
+<!-- Navigation buttons -->
+<div class="row mt-3">
+    <div class="col-md-6 text-left">
+        {% if category == "greetings" %}
+        <a href="{{ url_for('greetings') }}" class="btn custom-button">All Greetings</a>
+        {% elif category == "phrases" %}
+        <a href="{{ url_for('phrases') }}" class="btn custom-button">All Phrases</a>
+        {% endif %}
     </div>
-    
+    <div class="col-md-6 text-right">
+        {% if prev_id %}
+        <!-- Modify the 'Previous Word' button -->
+        <button id="prev-word" class="btn custom-button">Previous Word</button>
+        <script>
+            document.getElementById('prev-word').addEventListener('click', function() {
+                localStorage.setItem('{{ prev_id }}', 'visited'); // Mark the previous item as visited
+                window.location.href = "{{ url_for('view_item', id=prev_id) }}"; // Navigate to the previous item's page
+            });
+        </script>
+        {% endif %}
+        {% if next_id %}
+        <button id="next-word" class="btn custom-button">
+            {% if category == 'greetings' and index == 4 %}
+            Next Section: Helpful Phrases
+            {% elif category == 'phrases' and index == data_length - 1 %}
+            Next Section: Greetings
+            {% else %}
+            Next Word
+            {% endif %}
+        </button>
+        <script>
+            document.getElementById('next-word').addEventListener('click', function() {
+                localStorage.setItem('{{ next_id }}', 'visited'); // Mark the next item as visited
+                window.location.href = "{{ url_for('view_item', id=next_id) }}"; // Navigate to the next item's page
+            });
+        </script>
+        {% endif %}
+    </div>
+</div>
+
 {% else %}
-    <p>Item not found.</p>
+<p>Item not found.</p>
 {% endif %}
 {% endblock %}
 
