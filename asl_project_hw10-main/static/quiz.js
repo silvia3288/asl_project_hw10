@@ -117,12 +117,18 @@ $(document).ready(function(){
         });
     }
 
+
+    // Initially disable the submit button
+    $('#submit_ans').prop('disabled', true);
+
+    // Enable the submit button only if at least one checkbox is checked
+    $('input[type="checkbox"]').change(function() {
+        const anyChecked = $('input[type="checkbox"]:checked').length > 0;
+        $('#submit_ans').prop('disabled', !anyChecked);
+    });
+
     // submit button and ajax call for feedback
     $('#submit_ans').click(function() {
-        // const answers = $("input[type='checkbox']:checked").map(function() {
-        //     return parseInt($(this).attr('id').replace('choice', ''));
-        // }).get();
-
         const answers = $("input[type='checkbox']:checked").map(function() {
             return parseInt($(this).val()); // Make sure it's the correct method to fetch the value
         }).get(); // This should naturally be an array
@@ -135,45 +141,6 @@ $(document).ready(function(){
             data: JSON.stringify({ answer: answers }),
             dataType: 'json',
             success: function(response) {
-
-                //  let feedbackClass = response.is_correct ? 'feedback-correct' : 'feedback-incorrect';
-                //
-                //  let checkmark = $('<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/> </svg>')
-                // // feedbackIcon.attr("id", i.toString())
-                //
-                //
-                //  let xmark = $('<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="red" class="bi bi-x-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/></svg>')
-                //  //xmark.attr("id", i.toString());
-                //
-                //
-                //  // feedback message
-                //  $('#feedback').addClass(feedbackClass).text(response.feedback).show();
-                //
-                //  if (response.is_correct) {
-                //      $('#feedback').prepend(checkmark).'alert-success').removeClass('alert-danger');
-                //  } else {
-                //      $('#feedback').prepend(checkmark).addClass('alert-danger').removeClass('alert-success');
-                //  }
-                //
-                //  //color coded feedback for answers
-                //  $('.choice-checkbox').each(function() {
-                //      $(this).attr('disabled', true); // Disable checkboxes
-                //      var choiceIndex = parseInt($(this).attr('value'));
-                //      if (response.is_correct) {
-                //          if (question['answer_index'].includes(choiceIndex)) {
-                //              $(this).next('label').addClass('correct-answer');
-                //          }
-                //      } else {
-                //          // incorrect but selected --> red
-                //          if (answers.includes(choiceIndex)) {
-                //              $(this).next('label').addClass('wrong-answer');
-                //          }
-                //          // correct answers selected --> green
-                //          if (question['answer_index'].includes(choiceIndex)) {
-                //              $(this).next('label').addClass('correct-answer');
-                //          }
-                //      }
-                //  });
 
                 $('#feedback').empty();  // Clear previous feedback
                 let feedbackIcon;  // Declare the variable to hold the icon
