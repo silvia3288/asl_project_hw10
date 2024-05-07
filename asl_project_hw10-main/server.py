@@ -255,20 +255,20 @@ def home():
 
 @app.route('/greetings', methods=['GET', 'POST'])
 def greetings():
-    if request.method == 'POST':
-        session['completed_greetings'] = True
-        flash('Greetings section completed!', 'success')
-        return redirect(url_for('home'))
+#     if request.method == 'POST':
+#         session['completed_greetings'] = True
+#         flash('Greetings section completed!', 'success')
+#         return redirect(url_for('home'))
 
     go_go = data[0:5]
     return render_template('greetings.html', go_go=go_go)
 
 @app.route('/greetings_page', methods=['GET', 'POST'])
 def greetings_page():
-    if request.method == 'POST':
-        session['completed_greetings'] = True
-        flash('Greetings section completed!', 'success')
-        return redirect(url_for('greetings'))  # Assuming you want to stay on/still show the greetings page
+#     if request.method == 'POST':
+#         session['completed_greetings'] = True
+#         flash('Greetings section completed!', 'success')
+#         return redirect(url_for('greetings'))  # Assuming you want to stay on/still show the greetings page
     go_go = data[0:5]
     return render_template('greetings.html', go_go=go_go)
 
@@ -277,10 +277,10 @@ def greetings_page():
 
 @app.route('/phrases', methods=['GET', 'POST'])
 def phrases():
-    if request.method == 'POST':
-        session['completed_phrases'] = True
-        flash('Phrases section completed!', 'success')
-        return redirect(url_for('home'))
+#     if request.method == 'POST':
+#         session['completed_phrases'] = True
+#         flash('Phrases section completed!', 'success')
+#         return redirect(url_for('home'))
 
     popular_items = data[5:]
     return render_template('helpful_phrases.html', popular_items=popular_items)
@@ -288,10 +288,10 @@ def phrases():
 
 @app.route('/phrases_page', methods=['GET', 'POST'])
 def phrases_page():
-    if request.method == 'POST':
-        session['completed_phrases'] = True
-        flash('Phrases section completed!', 'success')
-        return redirect(url_for('phrases'))  # Assuming you want to redirect back to the phrases overview page
+#     if request.method == 'POST':
+#         session['completed_phrases'] = True
+#         flash('Phrases section completed!', 'success')
+#         return redirect(url_for('phrases'))  # Assuming you want to redirect back to the phrases overview page
     popular_items = data[5:]
     return render_template('helpful_phrases.html', popular_items=popular_items)
 
