@@ -32,7 +32,7 @@ data = [
     "ASL Translation": "YOU-NAME-WHAT",
         "image_steps": "https://media.baamboozle.com/uploads/images/820398/1655476629_39457.jpeg",
         "video": "https://www.youtube.com/watch?v=6pZ_KvSXMOg",
-        "pro_tip_text":  "Squint your eyebrows when asking a question that starts with the",
+        "pro_tip_text":  "Squint your eyebrows when asking a question that starts with the word 'what'",
 
   },
   {
