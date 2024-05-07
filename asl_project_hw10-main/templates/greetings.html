@@ -19,6 +19,27 @@
 <div id="quiz-button" style="display: none;" class="text-center mt-4">
     <a href="{{ url_for('start_quiz') }}" class="btn btn-success">Start Final Quiz</a>
 </div>
+
+<div class="modal fade" id="finalQuizModal" tabindex="-1" role="dialog" aria-labelledby="quizUnlockModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" >
+            <div class="modal-header">
+                Congratulations!
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <strong>You have viewed all greetings and helpful phrases! The Final Quiz is now unlocked.</strong>
+            </div>
+            <div class="modal-footer" style="justify-content: center;">
+                <a href="{{ url_for('start_quiz') }}" class="btn greeting-btn">Final Quiz</a>
+                <!--                <button type="button" class="btn greeting-btn" data-dismiss="modal">Close</button>-->
+            </div>
+        </div>
+    </div>
+</div>
 <br>
 
 
@@ -29,7 +50,7 @@
 
 <script>
 
-    let visitedGreetingsCount = 0;
+    let visitedCount = 0;
     let totalGreetings = 5;
 
     const serverSessionId = '{{ session_id }}';
@@ -54,7 +75,6 @@
             if (localStorage.getItem(item.id) === 'visited') {
                 buttonElement.classList.add('visited');
             } else {
-                visitedGreetingsCount++;
                 allVisitedGreetings = false; // Set to false if any item hasn't been visited
             }
 
@@ -81,12 +101,21 @@
     function checkQuizAvailability() {
         const completedGreetings = localStorage.getItem('completed_greetings') === 'true';
         const completedPhrases = localStorage.getItem('completed_phrases') === 'true';
-        if (completedGreetings && completedPhrases) {
+        const finalModalShown = localStorage.getItem('finalShown') === 'true'; // Check if the final modal has already been shown
+
+        if (completedGreetings && completedPhrases && !finalModalShown) {
             document.getElementById('quiz-button').style.display = 'block';
-        } else {
+            $('#finalQuizModal').modal('show');
+            localStorage.setItem('finalShown', 'true');
+        }
+        else if (completedGreetings && completedPhrases && finalModalShown) {
+            document.getElementById('quiz-button').style.display = 'block';
+        }
+        else {
             document.getElementById('quiz-button').style.display = 'none';
         }
     }
+
     function checkIntermediateQuizAvail(){
         const completedGreetings = localStorage.getItem('completed_greetings') === 'true';
         if(completedGreetings){
