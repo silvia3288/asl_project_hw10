@@ -1,6 +1,26 @@
 $(document).ready(function(){
     displayQuestions();
 
+    // check if all text boxes are filled to enable the submit button
+    function enableSubmitIfReady() {
+        let allFilled = true;
+        for (let i = 1; i < 4; i++) {
+            if ($('#hp-box' + i).val() === '') {
+                allFilled = false;
+                break;
+            }
+        }
+        $('#submit_hp').prop('disabled', !allFilled);
+    }
+
+    // check text boxes on keyup and paste events
+    $('input[type="text"]').on('keyup paste', function() {
+        enableSubmitIfReady();
+    });
+
+    // initial check in case of any prefilled values
+    enableSubmitIfReady();
+
     // entering quiz answers
     $('#submit_hp').click(function() {
         let correct = [];
